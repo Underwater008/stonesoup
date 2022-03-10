@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2984746326927847300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6717868548581522474}
+  - component: {fileID: 2568758225495592501}
+  m_Layer: 0
+  m_Name: RoomOld
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6717868548581522474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2984746326927847300}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2568758225495592501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2984746326927847300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1608a8e47ad742fba75842f6b899b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomAuthor: Abby
+  designedRoomFile: {fileID: 4900000, guid: 04a9d5aa2ce0b4245ae4cdddf19019c7, type: 3}
+  localTilePrefabs:
+  - {fileID: 6211645213597348926, guid: 28f7a4291e95c4826a82da00466e36aa, type: 3}
+  - {fileID: 4491020977424268337, guid: e4452545e29ee480f820924f990fb290, type: 3}
+  - {fileID: 1113547423427548, guid: 0b729d78ce5b24ec3a7aea862d730d52, type: 3}
+  - {fileID: 5645826802946437884, guid: 7efdbe88ffb224cf69dc61e3cb87ac31, type: 3}
+  - {fileID: 7867125146749373719, guid: 75148c01b24cb4c888baeae8d23b1e5c, type: 3}
+  - {fileID: 1114545316651272477, guid: 06f9bac9251304b8cb1bb693b4419055, type: 3}
+  roomGridX: 0
+  roomGridY: 0
+  abbyWallPrefab: {fileID: 1249101369981090, guid: 601ee452d30a84a0a950ef7975af8d28,
+    type: 3}
+  wallColors:
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  - {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  - {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  - {r: 0.4, g: 0.4, b: 0.4, a: 1}
+  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  - {r: 0.6, g: 0.6, b: 0.6, a: 1}
+  - {r: 0.7, g: 0.7, b: 0.7, a: 1}
+  - {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  - {r: 0.9, g: 0.9, b: 0.9, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  automataSteps: 10
+  caDeathLimit: 3
+  caBirthLimit: 5
+  spawnChance: 0.25

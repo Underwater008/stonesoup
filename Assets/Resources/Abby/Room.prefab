@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3839916676498421752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9058278996010780340}
+  - component: {fileID: -2704935910891642923}
+  m_Layer: 0
+  m_Name: Room
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9058278996010780340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3839916676498421752}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2704935910891642923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3839916676498421752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4a9969ff2424409b180ef8c3bb1566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomAuthor: Abby
+  designedRoomFile: {fileID: 0}
+  localTilePrefabs: []
+  roomGridX: 0
+  roomGridY: 0
+  RoomChoices:
+  - {fileID: 7883574303678556944, guid: 18a14064aec7f4b3f9e25f8d90bf2fc1, type: 3}
+  - {fileID: 4921675951574798621, guid: afbeea41bd6194df1a8804d887c072b8, type: 3}
+  - {fileID: 6527105718218916225, guid: 0eea26eb77c264267a0fa48804199627, type: 3}
+  - {fileID: 4683872718267856587, guid: 95492fecfc73d4b33910dd0294f86ba3, type: 3}
+  - {fileID: 4683872718267856587, guid: a0efd1bd07be64e01bb36ea08198134b, type: 3}
+  - {fileID: 4683872718267856587, guid: d94424141787c451eb17c8e79922d16c, type: 3}
+  - {fileID: 4683872718267856587, guid: 4ed9f9cb546d94d1cbed95b64126c24d, type: 3}
+  - {fileID: 4683872718267856587, guid: b56b245ba522d4941aa33de0f2d0d013, type: 3}
