@@ -131,5 +131,5 @@ MonoBehaviour:
   heldAngle: 0
   tileWereHolding: {fileID: 0}
   aimDirection: {x: 0, y: 0}
-  InventoryUI: {fileID: 7578468346777722419, guid: c36b1a3932ec347a9bf6b56fac1c3188,
+  InventoryUI: {fileID: 7578468346777722419, guid: bde9bde102a2a407a89b7fe9584e509f,
     type: 3}
