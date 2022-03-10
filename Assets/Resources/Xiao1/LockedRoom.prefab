@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8346437904188845166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6748137308961449493}
+  - component: {fileID: -4338281192361984816}
+  m_Layer: 0
+  m_Name: LockedRoom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6748137308961449493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346437904188845166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4338281192361984816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346437904188845166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19822cd16ffa4836816870b89a94646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomAuthor: xiao
+  designedRoomFile: {fileID: 0}
+  localTilePrefabs: []
+  roomGridX: 0
+  roomGridY: 0
+  doorPrefab: {fileID: 4290680103985690525, guid: 10e831a0fa52c40e89dff8e85524cf45,
+    type: 3}
+  enemyPrefab: {fileID: 2063615075842473536, guid: 103047e0ace1145ee9a4286811565faa,
+    type: 3}
+  enemy2Prefab: {fileID: 2063615075842473536, guid: 1ee30f7ab9e72ce44b4713812966447e,
+    type: 3}
+  healPrefab: {fileID: 4290680103985690525, guid: ff2ac28201fa749e9aa4b035b936a936,
+    type: 3}
+  keyPrefab: {fileID: 4290680103985690525, guid: 7e292e73d3ed84c6dbeea94c2c6cb2e3,
+    type: 3}
+  minNumEnemies: 1
+  maxNumEnemies: 3
+  minNumHeals: 1
+  maxNumHeals: 3
+  minNumKeys: 1
+  maxNumKeys: 3
+  borderWallProbability: 1
