@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class ABX_Dirt : Tile
 {
+    [Header("Dirt")]
     public Sprite barrenSprite;
     public Sprite enrichedSprite;
     public float enrichInterval;
     public float enrichRate;
+
+    [Header("Drops")]
+    public GameObject commonDrop;
+    public GameObject rareDrop;
+    public float rareChance;
+    public int minDrop;
+    public int maxDrop;
+    public float offsetRange;
+    
 
     public override void init()
     {
@@ -22,13 +32,29 @@ public class ABX_Dirt : Tile
         {
             Enrich();
         }
+        StartCoroutine(Dirt());
     }
 
     public override void useAsItem(Tile tileUsingUs)
     {
         sprite.sprite = barrenSprite;
         removeTag(TileTags.Dirt);
-        //Drop items
+        for (int i = 0; i < Random.Range(minDrop, maxDrop); i++)
+        {
+            Vector3 offsetVector = new Vector3(Random.Range(-offsetRange, offsetRange),
+                                               Random.Range(-offsetRange, offsetRange),
+                                               Random.Range(-offsetRange, offsetRange));
+            if (Random.Range(0f, 1f) < rareChance)
+            {
+                Instantiate(rareDrop, transform.position + offsetVector, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(commonDrop, transform.position + offsetVector, Quaternion.identity);
+            }
+        }
+        StopAllCoroutines();
+        StartCoroutine(Dirt());
     }
 
     void Enrich ()
