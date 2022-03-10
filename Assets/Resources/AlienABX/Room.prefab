@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8483226265423240182}
-  - component: {fileID: 7600743443944727476}
+  - component: {fileID: 3988431700022513465}
   m_Layer: 0
   m_Name: room
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7600743443944727476
+--- !u!114 &3988431700022513465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,16 +40,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7674026994006522764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b9f117dbe05b4b46bc09f9cbc564d8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5177add6efe404b3baf8c241740e4873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomAuthor: xiao
+  roomAuthor: 
   designedRoomFile: {fileID: 0}
   localTilePrefabs: []
   roomGridX: 0
   roomGridY: 0
   roomChoices:
   - {fileID: 8346437904188845166, guid: 442e6c743bf05402d83d8e0b24281c51, type: 3}
-  - {fileID: 8346437904188845166, guid: 1de2d4dda7bea4a1fab55615c6c5525a, type: 3}
   - {fileID: 8346437904188845166, guid: 2bd7ed1df74ca43d9bcf3e659e806773, type: 3}
+  - {fileID: 8346437904188845166, guid: 1de2d4dda7bea4a1fab55615c6c5525a, type: 3}
   iscreated: 0

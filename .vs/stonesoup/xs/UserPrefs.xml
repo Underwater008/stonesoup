@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{4AF5F5EC-B76F-DF89-CC9B-315C8814C037}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Resources/AlienABX/Scripts/xiao23Room1.cs">
+    <Files>
+      <File FileName="Assets/Resources/AlienABX/Scripts/xiao23Room1.cs" Line="8" Column="18" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="87286c64-3504-45cc-815e-5b45a34c027c" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
