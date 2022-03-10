@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6111656561848001810
+--- !u!1 &7674026994006522764
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3561851457724968823}
-  - component: {fileID: -7128657771652894829}
+  - component: {fileID: 8483226265423240182}
+  - component: {fileID: 7600743443944727476}
   m_Layer: 0
-  m_Name: Room
+  m_Name: room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3561851457724968823
+--- !u!4 &8483226265423240182
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6111656561848001810}
+  m_GameObject: {fileID: 7674026994006522764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,22 +31,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7128657771652894829
+--- !u!114 &7600743443944727476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6111656561848001810}
+  m_GameObject: {fileID: 7674026994006522764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 284cfa5a1b9c044cfb4b514ab77e8dc7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b9f117dbe05b4b46bc09f9cbc564d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomAuthor: AlienABX
-  designedRoomFile: {fileID: 4900000, guid: 55bcd56a018bc47bb8b06d2a17ff7b99, type: 3}
-  localTilePrefabs:
-  - {fileID: 4290680103985690525, guid: 7e8c6aed3fda447a98c8afd0af681fb6, type: 3}
-  - {fileID: 4290680103985690525, guid: 7e8c6aed3fda447a98c8afd0af681fb6, type: 3}
+  roomAuthor: xiao
+  designedRoomFile: {fileID: 0}
+  localTilePrefabs: []
   roomGridX: 0
   roomGridY: 0
+  roomChoices:
+  - {fileID: 8346437904188845166, guid: 442e6c743bf05402d83d8e0b24281c51, type: 3}
+  - {fileID: 8346437904188845166, guid: 1de2d4dda7bea4a1fab55615c6c5525a, type: 3}
+  - {fileID: 8346437904188845166, guid: 2bd7ed1df74ca43d9bcf3e659e806773, type: 3}
+  iscreated: 0
