@@ -14,3 +14,4 @@ Video/*
 *.sublime-project
 *.sublime-workspace
 Logs
+UserSettings
