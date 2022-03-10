@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomAuthor: AlienABX
-  designedRoomFile: {fileID: 0}
-  localTilePrefabs: []
+  designedRoomFile: {fileID: 4900000, guid: 55bcd56a018bc47bb8b06d2a17ff7b99, type: 3}
+  localTilePrefabs:
+  - {fileID: 4290680103985690525, guid: 7e8c6aed3fda447a98c8afd0af681fb6, type: 3}
+  - {fileID: 4290680103985690525, guid: 7e8c6aed3fda447a98c8afd0af681fb6, type: 3}
   roomGridX: 0
   roomGridY: 0
