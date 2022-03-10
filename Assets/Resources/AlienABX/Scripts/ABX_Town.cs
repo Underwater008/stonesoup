@@ -17,6 +17,7 @@ public class ABX_Town : Tile
     [SerializeField] TextMeshPro _levelTMP;
     List<string> _townRequirements = new List<string>();
 
+
     public override void init()
     {
         _townRequirements.Add("Req: 1 wood.");
@@ -41,43 +42,52 @@ public class ABX_Town : Tile
         _reqTMP.text = _townRequirements[_level];
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(1);
+        Tile tile = collision.GetComponent<Tile>();
+        if (tile != null)
+        {
+            if (tile.hasTag(TileTags.Money))
+            {
+                Debug.Log(2);
+                EvaluatePayment(tile);
+                return;
+            }
+        }
+    }
 
-    // public override void interact(Tile tileInteracting)
-    // {
-    //     //unsure like... how one would implement the merchent stuff other than this.
-    //     //goal is to have player use resources and put them into this, and then it levels up.
+    //Function called when item is dropped on research thing
+    void EvaluatePayment(Tile tileBeingEvaluated)
+    {
+        if (tileBeingEvaluated.Equals(null))
+            return;
 
-
-    //     //has nothing to trade
-
-    //     if (tileInteracting.tileWereHolding.Equals(null))
-    //         return;
-    //     if (!tileInteracting.tileWereHolding.hasTag(TileTags.Money))
-    //         return;
-
-    //     Tile t = tileInteracting.tileWereHolding;
-    //     t.dropped(tileInteracting);
-    //     if (t.tileName.Equals("Clay"))
-    //     {
-    //         _clay++;
-    //         Clay c = (Clay)t;
-    //         c.delete();
-    //     }
-    //     if (t.tileName.Equals("Wood"))
-    //     {
-    //         _wood++;
-    //         Wood w = (Wood)t;
-    //         w.delete();
-    //     }
+        if (!tileBeingEvaluated.hasTag(TileTags.Money))
+            return;
 
 
+        Tile t = tileBeingEvaluated;
 
-    //     if (CheckLevels())
-    //         _level++;
+        if (t.tileName.Equals("Clay"))
+        {
+            _clay++;
+            Clay c = (Clay)t;
+            c.delete();
+        }
+        if (t.tileName.Equals("Wood"))
+        {
+            _wood++;
+            Wood w = (Wood)t;
+            w.delete();
+        }
 
-    //     _levelTMP.text = _level.ToString();
-    //     _reqTMP.text = _townRequirements[_level];
-    // }
+        if (CheckLevels())
+            _level++;
+
+        _levelTMP.text = _level.ToString();
+        _reqTMP.text = _townRequirements[_level];
+    }
 
     bool CheckLevels()
     {
