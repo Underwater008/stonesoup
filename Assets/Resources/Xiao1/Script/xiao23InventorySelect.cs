@@ -98,14 +98,14 @@ public class xiao23InventorySelect : Tile {
         if (Input.mouseScrollDelta.y > 0)
         {
             I[numX].color = Color.white;
-            numX += 1;
+            numX -= 1;
             itemChanged = true;
         }
         if (Input.mouseScrollDelta.y < 0)
         {
             I[numX].color = Color.white;
-            numX -= 1;
-            itemChanged = true;
+            numX += 1;
+            itemChanged = true; 
         }
         numX = numX % 6;
         if (numX < 0)

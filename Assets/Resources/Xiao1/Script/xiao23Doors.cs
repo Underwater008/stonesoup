@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class xiao23Doors : Tile
 {
-    //public override void pickUp(Tile tilePickingUsUp) {
+  //public override void pickUp(Tile tilePickingUsUp) {
 
-    //Debug.Log("Picked up BronzeKey");
+  //Debug.Log("Picked up BronzeKey");
 
-    //base.pickUp(tilePickingUsUp);
+  //base.pickUp(tilePickingUsUp);
 
-    //tilePickingUsUp.restoreAllHealth();
-    //die();
+  //tilePickingUsUp.restoreAllHealth();
+  //die();
 
-    //}
-    // Start is called before the first frame update
-
+  //}
+  // Start is called before the first frame update
+  public GameObject E;
 
     Transform canvas;
 
@@ -54,7 +54,7 @@ public class xiao23Doors : Tile
         if (collision.name.Contains("BronzeKey") && IsInHand(collision.transform))
         {
             keyTile = collision.GetComponent<Tile>();
-            var prefab = Resources.Load<GameObject>("Xiao/UI/PickUpE");
+            var prefab = E;
             EPressed= Instantiate(prefab, canvas);
             EPressed.transform.position = Camera.main.WorldToScreenPoint(transform.position);
         }
