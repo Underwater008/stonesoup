@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 731b85b07537f874b8dcec5b9f6381d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 2
+  tags: 66
   tileName: MagicWeapon
   health: 5
   deathEffect: {fileID: 0}

@@ -2,12 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class xiao23HealingAll : Tile
+public class xiao23Keys : Tile
 {
 
-        public override void pickUp(Tile tilePickingUsUp) {
+    
+    public override void pickUp(Tile tilePickingUsUp) {
 
-        Debug.Log("Picked up Apple");
+        if (tileName == "BronzeKey")
+        {
+            Debug.Log("Picked up BronzeKey");
+
+        }
+
+       /* if (tileName == "SilverKey")
+        {
+            Debug.Log("Picked up SilverKey");
+        
+        }
 
         if (!hasTag(TileTags.CanBeHeld)) {
 			return;
@@ -28,13 +39,6 @@ public class xiao23HealingAll : Tile
             xiao23InventorySelect.MainInventory.PutItemInBag(this);
             Destroy(gameObject);
         }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("Potion used");
-            tilePickingUsUp.restoreAllHealth();
-            die();
-        }
 		
 
         //base.pickUp(tilePickingUsUp);
@@ -45,6 +49,8 @@ public class xiao23HealingAll : Tile
     public override void useAsItem(Tile tileUsingUs)
     {
         base.useAsItem(tileUsingUs);
+        if (!(tileUsingUs is xiao23Doors))
+            return;
         Destroy(gameObject);
         if (xiao23InventorySelect.MainInventory != null)
         {
@@ -61,6 +67,10 @@ public class xiao23HealingAll : Tile
             xiao23InventorySelect.MainInventory.RemoveItem(this);
         }
     }
+    public void OnDisable()
+    {
+      
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +79,7 @@ public class xiao23HealingAll : Tile
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {*/
+
     }
 }

@@ -132,7 +132,6 @@ MonoBehaviour:
   heldAngle: 0
   tileWereHolding: {fileID: 0}
   aimDirection: {x: 0, y: 0}
-  E: {fileID: 672723536979813573, guid: 32e4a6f820ae64e7db2e37b393dcd269, type: 3}
 --- !u!50 &-8571633189322029550
 Rigidbody2D:
   serializedVersion: 4

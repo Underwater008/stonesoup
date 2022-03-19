@@ -7,6 +7,7 @@ using UnityEngine;
 public class xiao23BackPack : Tile
 {
     public GameObject InventoryUI;
+    public GameObject ItemAssets;
     //public GameObject Parent;
 
 
@@ -18,6 +19,7 @@ public class xiao23BackPack : Tile
 
             die();
             Instantiate(InventoryUI);
+            //Instantiate(ItemAssets);
         }
 
         //base.pickUp(tilePickingUsUp);
