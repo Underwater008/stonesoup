@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ABX_Shovel : Tile
+public class ABX_Shovel : ABX_Tile
 {
     public override void useAsItem(Tile tileUsingUs)
     {

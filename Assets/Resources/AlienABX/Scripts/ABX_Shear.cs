@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ABX_Shear : Tile
+public class ABX_Shear : ABX_Tile
 {
     public float range;
     Tile _target;
