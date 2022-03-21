@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ABX_Dirt : Tile
+public class ABX_Plant : Tile
 {
-    [Header("Dirt")]
-    public Sprite barrenSprite;
-    public Sprite enrichedSprite;
-    public float enrichInterval;
-    public float enrichRate;
+    [Header("Plant")]
+    public Sprite harvestedSprite;
 
     [Header("Drops")]
     public GameObject commonDrop;
@@ -17,28 +14,15 @@ public class ABX_Dirt : Tile
     public int minDrop;
     public int maxDrop;
     public float offsetRange;
-    
 
-    public override void init()
-    {
-        StartCoroutine(Dirt());
-        base.init();
-    }
 
-    IEnumerator Dirt ()
-    {
-        yield return new WaitForSeconds(enrichInterval);
-        if (Random.Range(0f, 1f) < enrichRate)
-        {
-            Enrich();
-        }
-        StartCoroutine(Dirt());
-    }
+    bool _canDrop = true;
 
     public override void useAsItem(Tile tileUsingUs)
     {
-        sprite.sprite = barrenSprite;
-        removeTag(TileTags.Dirt);
+        if (!_canDrop)
+            return;
+
         for (int i = 0; i < Random.Range(minDrop, maxDrop); i++)
         {
             Vector3 offsetVector = new Vector3(Random.Range(-offsetRange, offsetRange),
@@ -53,13 +37,8 @@ public class ABX_Dirt : Tile
                 Instantiate(commonDrop, transform.position + offsetVector, Quaternion.identity);
             }
         }
-        StopAllCoroutines();
-        StartCoroutine(Dirt());
-    }
 
-    void Enrich ()
-    {
-        sprite.sprite = enrichedSprite;
-        addTag(TileTags.Dirt);
+        _canDrop = false;
+        GetComponent<SpriteRenderer>().sprite = harvestedSprite;
     }
 }
