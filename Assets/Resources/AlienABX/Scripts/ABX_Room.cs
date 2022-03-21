@@ -6,7 +6,8 @@ using UnityEngine;
 public class ABX_Room : Room
 {
     public GameObject ABX_WallPrefab;
-    public GameObject ABX_OmnispherePrefab;
+    public GameObject ABX_PlantPrefab;
+    public GameObject ABX_DirtPrefab;
     List<Color> wallColors = new List<Color>();
     bool[,] _boolGrid, _nextBoolGrid;
     [HideInInspector] public int[,] _intGrid;
@@ -181,7 +182,7 @@ public class ABX_Room : Room
                 {
                     if (Random.Range(0f, 1f) < .5f)
                     {
-                        _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_OmnispherePrefab, transform, x, y);
+                        _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_PlantPrefab, transform, x, y);
                     }
 
                 }
@@ -248,6 +249,11 @@ public class ABX_Room : Room
                 if (_boolGrid[x, y])
                 {
 
+                    if (_intGrid[x, y] == 1 || _intGrid[x, y] == 2 || _intGrid[x, y] == 3 || _intGrid[x, y] == 4 || _intGrid[x, y] == 5)
+                    {
+                        _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DirtPrefab, transform, x, y);
+                        continue;
+                    }
                     _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_WallPrefab, transform, x, y);
                     _tileGrid[x, y].GetComponentInChildren<SpriteRenderer>().color = wallColors[_intGrid[x, y]];
                 }

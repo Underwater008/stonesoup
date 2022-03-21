@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ABX_Plant : Tile
+public class ABX_Plant : ABX_Tile
 {
     [Header("Plant")]
     public Sprite harvestedSprite;

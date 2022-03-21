@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ABX_Dirt : Tile
+public class ABX_Dirt : ABX_Tile
 {
     [Header("Dirt")]
     public Sprite barrenSprite;
@@ -17,7 +17,7 @@ public class ABX_Dirt : Tile
     public int minDrop;
     public int maxDrop;
     public float offsetRange;
-    
+
 
     public override void init()
     {
@@ -25,7 +25,7 @@ public class ABX_Dirt : Tile
         base.init();
     }
 
-    IEnumerator Dirt ()
+    IEnumerator Dirt()
     {
         yield return new WaitForSeconds(enrichInterval);
         if (Random.Range(0f, 1f) < enrichRate)
@@ -57,7 +57,7 @@ public class ABX_Dirt : Tile
         StartCoroutine(Dirt());
     }
 
-    void Enrich ()
+    void Enrich()
     {
         sprite.sprite = enrichedSprite;
         addTag(TileTags.Dirt);
