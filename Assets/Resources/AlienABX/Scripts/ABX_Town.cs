@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ABX_Town : Tile
+public class ABX_Town : ABX_Tile
 {
     int _wood;
     int _clay;

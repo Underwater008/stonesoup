@@ -51,6 +51,8 @@ MonoBehaviour:
   roomGridY: 0
   ABX_WallPrefab: {fileID: 1249101369981090, guid: f615d5830aa2f4244a71c6fb05bdcac4,
     type: 3}
+  ABX_OmnispherePrefab: {fileID: 5645826802946437884, guid: 6e38b1f7654464fcbb18629ddc36ffa5,
+    type: 3}
   automataSteps: 10
   caDeathLimit: 3
   caBirthLimit: 5
