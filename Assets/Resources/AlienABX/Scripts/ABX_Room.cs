@@ -249,7 +249,12 @@ public class ABX_Room : Room
                 if (_boolGrid[x, y])
                 {
 
-                    if (_intGrid[x, y] == 1 || _intGrid[x, y] == 2 || _intGrid[x, y] == 3 || _intGrid[x, y] == 4 || _intGrid[x, y] == 5)
+                    if (_intGrid[x, y] == 1 ||
+                        _intGrid[x, y] == 2 ||
+                        _intGrid[x, y] == 3 ||
+                        _intGrid[x, y] == 4 ||
+                        _intGrid[x, y] == 5 ||
+                        _intGrid[x, y] == 6)
                     {
                         _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DirtPrefab, transform, x, y);
                         continue;
