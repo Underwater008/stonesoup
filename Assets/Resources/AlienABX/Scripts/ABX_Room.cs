@@ -16,7 +16,6 @@ public class ABX_Room : Room
     public int caBirthLimit = 5;
     public float spawnChance;
 
-    LevelGenerator _ourGenerator;
     ExitConstraint _requiredExits;
     public static int yoCount = 0;
     void AssignWallColors()
@@ -30,8 +29,8 @@ public class ABX_Room : Room
     }
     public override void fillRoom(LevelGenerator ourGenerator, ExitConstraint requiredExits)
     {
+
         AssignWallColors();
-        _ourGenerator = ourGenerator;
         _requiredExits = requiredExits;
         gridWidth = LevelGenerator.ROOM_WIDTH;
         gridHeight = LevelGenerator.ROOM_HEIGHT;
@@ -47,7 +46,8 @@ public class ABX_Room : Room
         SetGroundVals();
         CreateCave();
 
-
+        Debug.Log(MeetsConstraints(requiredExits));
+        // Debug.Log(_requiredExits.downExitRequired);
         if (!MeetsConstraints(_requiredExits))
         {
             yoCount++;
@@ -58,7 +58,6 @@ public class ABX_Room : Room
             MakeExits();
             SetGroundVals();
             CreateCave();
-
         }
 
 
@@ -427,22 +426,27 @@ public class ABX_Room : Room
 
 
 
-    bool _hasUpExit;
-    bool _hasDownExit;
-    bool _hasLeftExit;
-    bool _hasRightExit;
-    bool _hasUpLeftPath;
-    bool _hasUpRightPath;
-    bool _hasUpDownPath;
-    bool _hasRightDownPath;
-    bool _hasRightLeftPath;
-    bool _hasDownLeftPath;
+    bool _hasUpExit, _hasDownExit, _hasLeftExit, _hasRightExit;
+    bool _hasUpLeftPath, _hasUpRightPath, _hasUpDownPath, _hasRightDownPath, _hasRightLeftPath, _hasDownLeftPath;
 
+    void ResetBools()
+    {
+        _hasUpExit = false;
+        _hasDownExit = false;
+        _hasLeftExit = false;
+        _hasRightExit = false;
+
+        _hasUpLeftPath = false;
+        _hasUpRightPath = false;
+        _hasUpDownPath = false;
+        _hasRightDownPath = false;
+        _hasRightLeftPath = false;
+        _hasDownLeftPath = false;
+    }
 
     private void ValidateRoom()
     {
         // Debug.Log(LevelGenerator.ROOM_WIDTH);
-
         Vector2Int upExit = new Vector2Int(LevelGenerator.ROOM_WIDTH / 2, LevelGenerator.ROOM_HEIGHT - 1);
         Vector2Int downExit = new Vector2Int(LevelGenerator.ROOM_WIDTH / 2, 0);
         Vector2Int leftExit = new Vector2Int(0, LevelGenerator.ROOM_HEIGHT / 2);
@@ -457,16 +461,16 @@ public class ABX_Room : Room
         _hasRightDownPath = DoesPathExist(rightExit, downExit);
         _hasRightLeftPath = DoesPathExist(rightExit, leftExit);
         _hasDownLeftPath = DoesPathExist(downExit, leftExit);
-        Debug.Log("_hasUpexit: " + _hasUpExit);
-        Debug.Log("_hasDownExit: " + _hasDownExit);
-        Debug.Log("_hasLeftExit: " + _hasLeftExit);
-        Debug.Log("_hasRightExit: " + _hasRightExit);
-        Debug.Log("_hasUpLeftPath: " + _hasUpLeftPath);
-        Debug.Log("_hasUpRightPath: " + _hasUpRightPath);
-        Debug.Log("_hasUpDownPath: " + _hasUpDownPath);
-        Debug.Log("_hasRightDownPath: " + _hasRightDownPath);
-        Debug.Log("_hasRightLeftPath: " + _hasRightLeftPath);
-        Debug.Log("_hasDownLeftPath: " + _hasDownLeftPath);
+        // Debug.Log("_hasUpexit: " + _hasUpExit);
+        // Debug.Log("_hasDownExit: " + _hasDownExit);
+        // Debug.Log("_hasLeftExit: " + _hasLeftExit);
+        // Debug.Log("_hasRightExit: " + _hasRightExit);
+        // Debug.Log("_hasUpLeftPath: " + _hasUpLeftPath);
+        // Debug.Log("_hasUpRightPath: " + _hasUpRightPath);
+        // Debug.Log("_hasUpDownPath: " + _hasUpDownPath);
+        // Debug.Log("_hasRightDownPath: " + _hasRightDownPath);
+        // Debug.Log("_hasRightLeftPath: " + _hasRightLeftPath);
+        // Debug.Log("_hasDownLeftPath: " + _hasDownLeftPath);
     }
 
     public bool MeetsConstraints(ExitConstraint requiredExits)
