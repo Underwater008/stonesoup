@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3485661598603970493}
-  - component: {fileID: -3524436507035893381}
+  - component: {fileID: 7684387218832088933}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3524436507035893381
+--- !u!114 &7684387218832088933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,13 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a474cbd0e358a47a7b9129b5c6f0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomAuthor: 
+  roomAuthor: Abby
   designedRoomFile: {fileID: 4900000, guid: 55bcd56a018bc47bb8b06d2a17ff7b99, type: 3}
   localTilePrefabs:
-  - {fileID: 5645826802946437884, guid: 6e38b1f7654464fcbb18629ddc36ffa5, type: 3}
-  - {fileID: 4290680103985690525, guid: 9ccd680c8668f4af2835fa11529c97f6, type: 3}
-  - {fileID: 4290680103985690525, guid: ea7ba37ad19a34ad9b2ecf16d812a9c2, type: 3}
-  - {fileID: 7867125146749373719, guid: 8abb669a89dc943c981cdd855f47d865, type: 3}
-  - {fileID: 2716136261337789733, guid: 8eff30cd696e040e89cfb4acaadc976a, type: 3}
+  - {fileID: 0}
   roomGridX: 0
   roomGridY: 0
+  ABX_WallPrefab: {fileID: 1249101369981090, guid: f615d5830aa2f4244a71c6fb05bdcac4,
+    type: 3}
+  automataSteps: 10
+  caDeathLimit: 3
+  caBirthLimit: 5
+  spawnChance: 0.25
