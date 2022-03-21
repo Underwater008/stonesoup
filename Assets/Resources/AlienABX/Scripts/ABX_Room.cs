@@ -20,6 +20,14 @@ public class ABX_Room : Room
 
     ExitConstraint _requiredExits;
     public static int yoCount = 0;
+
+    //move text_back in canvas to the top of the screen
+    public void Start()
+    {
+        var textBack = GameObject.Find("Canvas").transform.Find("text_back").GetComponent<RectTransform>();
+        var pos = textBack.anchoredPosition;
+        textBack.anchoredPosition = new Vector3(pos.x, 260);        //change y to this number in Rect Transform of text_back
+    }
     void AssignWallColors()
     {
         wallColors.Clear();
