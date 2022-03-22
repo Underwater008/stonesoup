@@ -65,8 +65,18 @@ public class ABX_Room : Room
         SetGroundVals();
         CreateCave();
 
+        // Debug.Log(MeetsConstraints(requiredExits));
+        while (!MeetsConstraints(requiredExits))
+        {
+            DeleteWalls();
+            WallBools();
+            RandomWalls();
+            SetGroundVals();
+            CreateCave();
+        }
+
         MakeExits();
-        MakeAlcloves();
+        // MakeAlcloves();
         StartCoroutine(WaitForGenerator());
 
 
@@ -90,6 +100,8 @@ public class ABX_Room : Room
         {
             for (int y = 0; y < gridHeight; y++)
             {
+                _boolGrid[x, y] = false;
+                _intGrid[x, y] = 0;
                 ClearWall(x, y);
             }
         }
@@ -136,6 +148,9 @@ public class ABX_Room : Room
     void MakeExits()
     {
         ///<<TODO>>
+        //make it : 
+        //so the critical path cant be short
+
         // bool randomLeftExit = false, randomRightExit = false, randomUpExit = false, randomDownExit = false;
         // Additional random exits//
         // if (Random.Range(0f, 1f) < .5)
@@ -351,7 +366,7 @@ public class ABX_Room : Room
                     // spawning door
                     if (_intGrid[x, y] == -1 && !firstDoorSpawned)
                     {
-                        _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DoorPrefab, transform, x, y);
+                        // _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DoorPrefab, transform, x, y);
                         firstDoorSpawned = true;
                         continue;
                     }
@@ -365,7 +380,7 @@ public class ABX_Room : Room
                     //spawning door
                     if (_intGrid[x, y] == -2 && !secondDoorSpawned)
                     {
-                        _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DoorPrefab, transform, x, y);
+                        // _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DoorPrefab, transform, x, y);
                         secondDoorSpawned = true;
                         continue;
                     }
@@ -386,7 +401,7 @@ public class ABX_Room : Room
                         _intGrid[x, y] == 6 ||
                         _intGrid[x, y] == 7)
                     {
-                        // _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DirtPrefab, transform, x, y);
+                        _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DirtPrefab, transform, x, y);
                         continue;
                     }
                     _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_WallPrefab, transform, x, y);
@@ -479,8 +494,138 @@ public class ABX_Room : Room
 
         return newVal;
     }
+    ///<<Validation>>///
+
+    public bool _hasUpExit;
+    public bool _hasDownExit;
+    public bool _hasLeftExit;
+    public bool _hasRightExit;
+
+    public bool _hasUpLeftPath;
+    public bool _hasUpRightPath;
+    public bool _hasUpDownPath;
+    public bool _hasRightDownPath;
+    public bool _hasRightLeftPath;
+    public bool _hasDownLeftPath;
+    private void ValidateRoom()
+    {
+        int[,] indexGrid = _intGrid;
+        Vector2Int upExit = new Vector2Int(LevelGenerator.ROOM_WIDTH / 2, LevelGenerator.ROOM_HEIGHT - 1);
+        Vector2Int downExit = new Vector2Int(LevelGenerator.ROOM_WIDTH / 2, 0);
+        Vector2Int leftExit = new Vector2Int(0, LevelGenerator.ROOM_HEIGHT / 2);
+        Vector2Int rightExit = new Vector2Int(LevelGenerator.ROOM_WIDTH - 1, LevelGenerator.ROOM_HEIGHT / 2);
+        _hasUpExit = IsPointNavigable(indexGrid, upExit);
+        _hasDownExit = IsPointNavigable(indexGrid, downExit);
+        _hasLeftExit = IsPointNavigable(indexGrid, leftExit);
+        _hasRightExit = IsPointNavigable(indexGrid, rightExit);
+        _hasUpLeftPath = DoesPathExist(indexGrid, upExit, leftExit);
+        _hasUpRightPath = DoesPathExist(indexGrid, upExit, rightExit);
+        _hasUpDownPath = DoesPathExist(indexGrid, upExit, downExit);
+        _hasRightDownPath = DoesPathExist(indexGrid, rightExit, downExit);
+        _hasRightLeftPath = DoesPathExist(indexGrid, rightExit, leftExit);
+        _hasDownLeftPath = DoesPathExist(indexGrid, downExit, leftExit);
+        // Debug.Log("Room: " + roomVal);
+        // Debug.Log("hasUpexit: " + _hasUpExit);
+        // Debug.Log("_hasDownExit: " + _hasDownExit);
+        // Debug.Log("_hasLeftExit: " + _hasLeftExit);
+        // Debug.Log("_hasRightExit: " + _hasRightExit);
+        // Debug.Log("_hasUpLeftPath: " + _hasUpLeftPath);
+        // Debug.Log("_hasUpRightPath: " + _hasUpRightPath);
+        // Debug.Log("_hasUpDownPath: " + _hasUpDownPath);
+        // Debug.Log("_hasRightDownPath: " + _hasRightDownPath);
+        // Debug.Log("_hasRightLeftPath: " + _hasRightLeftPath);
+        // Debug.Log("_hasDownLeftPath: " + _hasDownLeftPath);
+    }
+
+    public bool MeetsConstraints(ExitConstraint requiredExits)
+    {
+        ValidateRoom();
+        if (requiredExits.upExitRequired && _hasUpExit == false)
+            return false;
+        if (requiredExits.downExitRequired && _hasDownExit == false)
+            return false;
+        if (requiredExits.leftExitRequired && _hasLeftExit == false)
+            return false;
+        if (requiredExits.rightExitRequired && _hasRightExit == false)
+            return false;
+        if (_hasUpLeftPath == false && requiredExits.upExitRequired && requiredExits.leftExitRequired)
+            return false;
+        if (_hasUpRightPath == false && requiredExits.upExitRequired && requiredExits.rightExitRequired)
+            return false;
+        if (_hasUpDownPath == false && requiredExits.upExitRequired && requiredExits.downExitRequired)
+            return false;
+        if (_hasRightDownPath == false && requiredExits.rightExitRequired && requiredExits.downExitRequired)
+            return false;
+        if (_hasRightLeftPath == false && requiredExits.rightExitRequired && requiredExits.leftExitRequired)
+            return false;
+        if (_hasDownLeftPath == false && requiredExits.downExitRequired && requiredExits.leftExitRequired)
+            return false;
+        return true;
+    }
 
 
 
+    bool DoesPathExist(int[,] indexGrid, Vector2Int startPoint, Vector2Int endPoint)
+    {
+        List<Vector2Int> openSet = new List<Vector2Int>();
+        List<Vector2Int> closedSet = new List<Vector2Int>();
+        if (IsPointNavigable(indexGrid, startPoint))
+            openSet.Add(startPoint);
+        while (openSet.Count > 0)
+        {
+            Vector2Int currentPoint = openSet[0];
+            openSet.RemoveAt(0);
+            if (currentPoint == endPoint)
+                return true;
+            //up neighbor
+            Vector2Int upNeighbor = new Vector2Int(currentPoint.x, currentPoint.y + 1);
+            if (openSet.Contains(upNeighbor) == false && closedSet.Contains(upNeighbor) == false)
+            {
+                if (IsPointNavigable(indexGrid, upNeighbor))
+                    openSet.Add(upNeighbor);
+            }
+            //down neighbor
+            Vector2Int downNeighbor = new Vector2Int(currentPoint.x, currentPoint.y - 1);
+            if (openSet.Contains(downNeighbor) == false && closedSet.Contains(downNeighbor) == false)
+            {
+                if (IsPointNavigable(indexGrid, downNeighbor))
+                    openSet.Add(downNeighbor);
+            }
+            //left neighbor
+            Vector2Int leftNeighbor = new Vector2Int(currentPoint.x - 1, currentPoint.y);
+            if (openSet.Contains(leftNeighbor) == false && closedSet.Contains(leftNeighbor) == false)
+            {
+                if (IsPointNavigable(indexGrid, leftNeighbor))
+                    openSet.Add(leftNeighbor);
+            }
+            //right neighbor
+            Vector2Int rightNeighbor = new Vector2Int(currentPoint.x + 1, currentPoint.y);
+            if (openSet.Contains(rightNeighbor) == false && closedSet.Contains(rightNeighbor) == false)
+            {
+                if (IsPointNavigable(indexGrid, rightNeighbor))
+                    openSet.Add(rightNeighbor);
+            }
+            closedSet.Add(currentPoint);
+        }
+        return false;
+    }
+    bool IsPointNavigable(int[,] indexGrid, Vector2Int point)
+    {
+        if (IsPointInGrid(point) == false)
+            return false;
+        if (indexGrid[point.x, point.y] < 7)
+            return true;
+        else
+            return false;
+
+    }
+    bool IsPointInGrid(Vector2Int point)
+    {
+        if (point.x < 0 || point.x >= LevelGenerator.ROOM_WIDTH)
+            return false;
+        if (point.y < 0 || point.y >= LevelGenerator.ROOM_HEIGHT)
+            return false;
+        return true;
+    }
 
 }
