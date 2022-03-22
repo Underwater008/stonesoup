@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class ABX_LevelGenerator : LevelGenerator
 {
+    [HideInInspector] public int maxRoomVal;
+    [HideInInspector] public bool levelGenerationDone = false;
     public override void generateCombinedRoomModeLevel()
     {
+        levelGenerationDone = false;
+        int currentRoomVal = 0;
         float totalRoomWidth = Tile.TILE_SIZE * ROOM_WIDTH;
         float totalRoomHeight = Tile.TILE_SIZE * ROOM_HEIGHT;
 
@@ -127,6 +131,7 @@ public class ABX_LevelGenerator : LevelGenerator
                         nextRoomX++;
                     }
                 }
+
             }
 
 
@@ -140,21 +145,22 @@ public class ABX_LevelGenerator : LevelGenerator
             if (roomToSpawn == startRoomPrefab)
             {
                 requiredExits.addDirConstraint(exitDir);
-                room = Room.generateRoom(roomToSpawn, this, currentRoomX, currentRoomY, requiredExits);
+                room = Room.generateRoom(roomToSpawn, this, currentRoomX, currentRoomY, 0, requiredExits);
                 GameManager.instance.currentRoom = room;
             }
             else if (!makingCriticalPath)
             {
                 requiredExits.addDirConstraint(entranceDir);
-                room = Room.generateRoom(roomToSpawn, this, currentRoomX, currentRoomY, requiredExits);
+                room = Room.generateRoom(roomToSpawn, this, currentRoomX, currentRoomY, -1, requiredExits);
             }
             else
             {
+                currentRoomVal++;
                 requiredExits.addDirConstraint(entranceDir);
                 requiredExits.addDirConstraint(exitDir);
-                room = Room.generateRoom(roomToSpawn, this, currentRoomX, currentRoomY, requiredExits);
+                room = Room.generateRoom(roomToSpawn, this, currentRoomX, currentRoomY, currentRoomVal, requiredExits);
             }
-
+            maxRoomVal = currentRoomVal;
             roomGrid[currentRoomX, currentRoomY] = room;
             criticalPath.Add(room);
             currentRoomX = nextRoomX;
@@ -169,7 +175,7 @@ public class ABX_LevelGenerator : LevelGenerator
             {
                 if (roomGrid[x, y] == null)
                 {
-                    roomGrid[x, y] = Room.generateRoom(nextRoomToSpawn(), this, x, y, ExitConstraint.None);
+                    roomGrid[x, y] = Room.generateRoom(nextRoomToSpawn(), this, x, y, -1, ExitConstraint.None);
                 }
                 float roomLeftX = totalRoomWidth * x - Tile.TILE_SIZE / 2;
                 float roomRightX = totalRoomWidth * (x + 1) + Tile.TILE_SIZE / 2;
@@ -230,6 +236,7 @@ public class ABX_LevelGenerator : LevelGenerator
 
 
 
+
         ///<<Unimportant>>///
         // Now as a final step, if we're doing chaos mode, we need to randomly rearrange all spawned tiles (that aren't walls, players, or exits)
         if (GameManager.gameMode == GameManager.GameMode.Chaos)
@@ -272,7 +279,7 @@ public class ABX_LevelGenerator : LevelGenerator
         }
 
 
-
+        levelGenerationDone = true;
 
     }
 }

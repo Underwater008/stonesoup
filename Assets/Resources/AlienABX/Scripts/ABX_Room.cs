@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 //have your cursor over "room" to automatically go to it
 public class ABX_Room : Room
 {
+    public TextMeshPro roomValTMP;
     public GameObject ABX_WallPrefab;
     public GameObject ABX_PlantPrefab;
     public GameObject ABX_DirtPrefab;
@@ -25,6 +27,7 @@ public class ABX_Room : Room
     public float spawnChance;
 
     ExitConstraint _requiredExits;
+    ABX_LevelGenerator generator;
     public static int yoCount = 0;
 
     //move text_back in canvas to the top of the screen
@@ -47,6 +50,7 @@ public class ABX_Room : Room
     {
 
         AssignWallColors();
+        generator = (ABX_LevelGenerator)ourGenerator;
         _requiredExits = requiredExits;
         gridWidth = LevelGenerator.ROOM_WIDTH;
         gridHeight = LevelGenerator.ROOM_HEIGHT;
@@ -60,16 +64,25 @@ public class ABX_Room : Room
         RandomWalls();
         SetGroundVals();
         CreateCave();
+
         MakeExits();
         MakeAlcloves();
+        StartCoroutine(WaitForGenerator());
 
-        SpawnWalls();
-
-        MakeOtherTiles();
 
 
     }
-
+    IEnumerator WaitForGenerator()
+    {
+        while (!generator.levelGenerationDone)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        SpawnWalls();
+        MakeOtherTiles();
+        roomValTMP.text = roomVal.ToString();
+        yield break;
+    }
 
     void DeleteWalls()
     {
@@ -161,7 +174,7 @@ public class ABX_Room : Room
                     //leave a gap for a door
                     if ((y == 3 || y == 4))
                     {
-                        _intGrid[x, y] = 0;
+                        _intGrid[x, y] = -3;
                         _boolGrid[x, y] = false;
                         continue;
                     }
@@ -170,7 +183,7 @@ public class ABX_Room : Room
                     //leave a gap for a door
                     if ((y == 3 || y == 4))
                     {
-                        _intGrid[x, y] = 0;
+                        _intGrid[x, y] = -3;
                         _boolGrid[x, y] = false;
                         continue;
                     }
@@ -180,10 +193,6 @@ public class ABX_Room : Room
     }
     void MakeOtherTiles()
     {
-
-
-        bool shopSpawned = false;
-
         for (int x = 0; x < gridWidth; x++)
         {
             for (int y = 0; y < gridHeight; y++)
@@ -224,9 +233,12 @@ public class ABX_Room : Room
         }
 
         //Below here is stuff that is spawned more sparingly
+        bool firstShopSpawned = false;
+        bool secondShopSpawned = false;
+        bool thirdShopSpawned = false;
 
-        //spawn shop
-        if (_requiredExits.upExitRequired && !shopSpawned && roomGridY == 1)
+        ///<<SHOP>>///
+        if (_requiredExits.upExitRequired && !firstShopSpawned && roomGridY == 1)
         {
             int x1 = 0;
             int y1 = 0;
@@ -238,9 +250,39 @@ public class ABX_Room : Room
             _tileGrid[x1, y1] = ABX_Tile.spawnABX_Tile(ABX_ShopPrefab, transform, x1, y1);
             _intGrid[x1, y1] = 1;
             _boolGrid[x1, y1] = true;
-            shopSpawned = true;
+            firstShopSpawned = true;
         }
 
+        if (_requiredExits.upExitRequired && !secondShopSpawned && roomGridY == 2)
+        {
+            int x1 = 0;
+            int y1 = 0;
+            while (_intGrid[x1, y1] != 0)
+            {
+                x1 = Random.Range(0, gridWidth);
+                y1 = Random.Range(0, gridHeight);
+            }
+            _tileGrid[x1, y1] = ABX_Tile.spawnABX_Tile(ABX_ShopPrefab, transform, x1, y1);
+            _intGrid[x1, y1] = 1;
+            _boolGrid[x1, y1] = true;
+            secondShopSpawned = true;
+        }
+
+        if (roomVal == generator.maxRoomVal && !thirdShopSpawned)
+        {
+            int x1 = 0;
+            int y1 = 0;
+            while (_intGrid[x1, y1] != 0)
+            {
+                x1 = Random.Range(0, gridWidth);
+                y1 = Random.Range(0, gridHeight);
+            }
+            _tileGrid[x1, y1] = ABX_Tile.spawnABX_Tile(ABX_ShopPrefab, transform, x1, y1);
+            _intGrid[x1, y1] = 1;
+            _boolGrid[x1, y1] = true;
+            thirdShopSpawned = true;
+        }
+        ///<<SHOP>><<END>>
 
 
     }
@@ -294,7 +336,7 @@ public class ABX_Room : Room
     {
         bool firstDoorSpawned = false;
         bool secondDoorSpawned = false;
-        bool thirdDoorSpawned = false;
+
         // Record ground vals and assign colors
         for (int x = 0; x < gridWidth; x++)
             for (int y = 0; y < gridHeight; y++)
@@ -326,16 +368,10 @@ public class ABX_Room : Room
                         secondDoorSpawned = true;
                         continue;
                     }
-                    if (_intGrid[x, y] == -2 && !thirdDoorSpawned)
-                    {
-                        _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DoorPrefab, transform, x, y);
-                        thirdDoorSpawned = true;
-                        continue;
-                    }
-
                     _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_UnbreakableWallPrefab, transform, x, y);
                     continue;
                 }
+
 
                 if (_boolGrid[x, y])
                 {
@@ -346,7 +382,8 @@ public class ABX_Room : Room
                         _intGrid[x, y] == 3 ||
                         _intGrid[x, y] == 4 ||
                         _intGrid[x, y] == 5 ||
-                        _intGrid[x, y] == 6)
+                        _intGrid[x, y] == 6 ||
+                        _intGrid[x, y] == 7)
                     {
                         // _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DirtPrefab, transform, x, y);
                         continue;
