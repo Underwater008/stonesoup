@@ -332,6 +332,7 @@ public class ABX_Room : Room
                 }
             }
     }
+    //TODO: Room validation
     void SpawnWalls()
     {
         bool firstDoorSpawned = false;
