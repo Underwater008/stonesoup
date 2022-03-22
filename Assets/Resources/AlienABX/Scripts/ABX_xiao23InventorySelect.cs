@@ -204,7 +204,7 @@ public class ABX_xiao23InventorySelect : MonoBehaviour
         {
             if (_items[i] == null)
                 continue;
-            if (tile.name.Equals(_items[i].GetComponent<ABX_Tile>().name))
+            if (tile.tileName.Equals(_items[i].GetComponent<ABX_Tile>().tileName))
             {
                 _count[i]++;
                 return true;
@@ -228,7 +228,6 @@ public class ABX_xiao23InventorySelect : MonoBehaviour
     {
 
         ChooseItem();
-        Debug.Log(_count[0]);
 
         //if (Input.GetKeyDown(KeyCode.B))
         //{
@@ -276,7 +275,7 @@ public class ABX_xiao23InventorySelect : MonoBehaviour
     {
         for (int i = 0; i < SIZE; i++)
         {
-            if (_items[i].GetComponent<ABX_Tile>().name.Equals(tile.name))
+            if (_items[i].GetComponent<ABX_Tile>().tileName.Equals(tile.tileName))
             {
                 return _count[i];
             }

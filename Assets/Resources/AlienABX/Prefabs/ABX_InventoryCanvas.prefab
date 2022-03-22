@@ -1266,10 +1266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1306,15 +1306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28134d5e34c374f1c84f581fd4dad266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags: 0
-  tileName: 
-  health: 1
-  deathEffect: {fileID: 0}
-  deathSFX: {fileID: 0}
-  heldOffset: {x: 0.2, y: -0.1}
-  heldAngle: 0
-  tileWereHolding: {fileID: 0}
-  aimDirection: {x: 0, y: 0}
   numberUI:
   - {fileID: 2092035638765948926}
   - {fileID: 1593406537639534918}

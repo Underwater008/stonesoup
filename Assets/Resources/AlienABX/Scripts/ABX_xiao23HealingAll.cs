@@ -55,6 +55,7 @@ public class ABX_xiao23HealingAll : ABX_Tile
         base.useAsItem(tileUsingUs);
     }
 
+    /*
     public override void dropped(Tile tileDroppingUs)
     {
         base.dropped(tileDroppingUs);
@@ -63,4 +64,5 @@ public class ABX_xiao23HealingAll : ABX_Tile
             xiao23InventorySelect.MainInventory.RemoveItem(this);
         }
     }
+    */
 }
