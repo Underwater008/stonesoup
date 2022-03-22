@@ -143,7 +143,7 @@ public class ABX_Room : Room
                     //leave a gap for a door
                     if ((x == 4 || x == 5))
                     {
-                        _intGrid[x, y] = 0;
+                        _intGrid[x, y] = -2;
                         _boolGrid[x, y] = false;
                         continue;
                     }
@@ -293,6 +293,8 @@ public class ABX_Room : Room
     void SpawnWalls()
     {
         bool firstDoorSpawned = false;
+        bool secondDoorSpawned = false;
+        bool thirdDoorSpawned = false;
         // Record ground vals and assign colors
         for (int x = 0; x < gridWidth; x++)
             for (int y = 0; y < gridHeight; y++)
@@ -303,11 +305,31 @@ public class ABX_Room : Room
                 //First unbreakable wall
                 if (roomGridY == 1 && y == gridHeight - 1)
                 {
-                    //spawning door
+                    // spawning door
                     if (_intGrid[x, y] == -1 && !firstDoorSpawned)
                     {
                         _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DoorPrefab, transform, x, y);
                         firstDoorSpawned = true;
+                        continue;
+                    }
+
+                    _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_UnbreakableWallPrefab, transform, x, y);
+                    continue;
+                }
+                //Second unbreakable wall
+                if (roomGridY == 3 && y == 0)
+                {
+                    //spawning door
+                    if (_intGrid[x, y] == -2 && !secondDoorSpawned)
+                    {
+                        _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DoorPrefab, transform, x, y);
+                        secondDoorSpawned = true;
+                        continue;
+                    }
+                    if (_intGrid[x, y] == -2 && !thirdDoorSpawned)
+                    {
+                        _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DoorPrefab, transform, x, y);
+                        thirdDoorSpawned = true;
                         continue;
                     }
 
