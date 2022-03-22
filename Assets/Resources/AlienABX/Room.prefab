@@ -55,6 +55,16 @@ MonoBehaviour:
     type: 3}
   ABX_DirtPrefab: {fileID: 8618647374849572266, guid: 2025661f1012494458da857ca5882ce4,
     type: 3}
+  ABX_DoorPrefab: {fileID: 4290680103985690525, guid: e72fc64a066a2461ab78fb4ea1f615d8,
+    type: 3}
+  ABX_UnbreakableWallPrefab: {fileID: 1390380352294714, guid: da9113019d78e4b8d92465a693d3ca5e,
+    type: 3}
+  ABX_ClayPrefab: {fileID: 7867125146749373719, guid: 8abb669a89dc943c981cdd855f47d865,
+    type: 3}
+  ABX_WoodPrefab: {fileID: 1114545316651272477, guid: c55c68cb5291647678507079a741ffcf,
+    type: 3}
+  ABX_ShopPrefab: {fileID: 5645826802946437884, guid: 6e38b1f7654464fcbb18629ddc36ffa5,
+    type: 3}
   automataSteps: 10
   caDeathLimit: 3
   caBirthLimit: 5

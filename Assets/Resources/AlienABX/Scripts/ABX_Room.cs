@@ -8,6 +8,12 @@ public class ABX_Room : Room
     public GameObject ABX_WallPrefab;
     public GameObject ABX_PlantPrefab;
     public GameObject ABX_DirtPrefab;
+    public GameObject ABX_DoorPrefab;
+    public GameObject ABX_UnbreakableWallPrefab;
+    public GameObject ABX_ClayPrefab;
+    public GameObject ABX_WoodPrefab;
+    public GameObject ABX_ShopPrefab;
+
     List<Color> wallColors = new List<Color>();
     bool[,] _boolGrid, _nextBoolGrid;
     [HideInInspector] public int[,] _intGrid;
@@ -58,6 +64,7 @@ public class ABX_Room : Room
         MakeAlcloves();
 
         SpawnWalls();
+
         MakeOtherTiles();
 
 
@@ -115,15 +122,17 @@ public class ABX_Room : Room
     }
     void MakeExits()
     {
-        //Additional random exits//
-        if (Random.Range(0f, 1f) < .5)
-            _requiredExits.downExitRequired = true;
-        if (Random.Range(0f, 1f) < .5)
-            _requiredExits.upExitRequired = true;
-        if (Random.Range(0f, 1f) < .5)
-            _requiredExits.leftExitRequired = true;
-        if (Random.Range(0f, 1f) < .5)
-            _requiredExits.rightExitRequired = true;
+        ///<<TODO>>
+        // bool randomLeftExit = false, randomRightExit = false, randomUpExit = false, randomDownExit = false;
+        // Additional random exits//
+        // if (Random.Range(0f, 1f) < .5)
+        //     randomDownExit = true;
+        // if (Random.Range(0f, 1f) < .5)
+        //     randomUpExit = true;
+        // if (Random.Range(0f, 1f) < .5)
+        //     randomLeftExit = true;
+        // if (Random.Range(0f, 1f) < .5)
+        //     randomRightExit = true;
 
         for (int x = 0; x < gridWidth; x++)
             for (int y = 0; y < gridHeight; y++)
@@ -143,7 +152,7 @@ public class ABX_Room : Room
                     //leave a gap for a door
                     if ((x == 4 || x == 5))
                     {
-                        _intGrid[x, y] = 0;
+                        _intGrid[x, y] = -1;
                         _boolGrid[x, y] = false;
                         continue;
                     }
@@ -172,29 +181,64 @@ public class ABX_Room : Room
     void MakeOtherTiles()
     {
 
-        bool hasOmnisphere = false;
-        bool omniSphereSpawned = false;
-        if (Random.Range(0f, 1f) < .3)
-        {
-            hasOmnisphere = true;
-        }
+
+        bool shopSpawned = false;
 
         for (int x = 0; x < gridWidth; x++)
         {
             for (int y = 0; y < gridHeight; y++)
             {
-                if (omniSphereSpawned)
-                    continue;
 
+                //if nothing is in the tile
                 if (_intGrid[x, y] == 0)
                 {
+                    // Plant
                     if (Random.Range(0f, 1f) < .5f)
                     {
                         _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_PlantPrefab, transform, x, y);
+                        _intGrid[x, y] = 1;
+                        _boolGrid[x, y] = true;
                     }
+
+                    //spawning the shop
+                    if (_requiredExits.upExitRequired)
+                    {
+                        // if (Random.Range(0f, 1f) < .3f && !shopSpawned)
+                        // {
+                        //     _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_ShopPrefab, transform, x, y);
+                        //     _intGrid[x, y] = 1;
+                        //     _boolGrid[x, y] = true;
+                        //     shopSpawned = true;
+                        //     continue;
+                        // }
+                    }
+                }
+
+                //if something required in each room hasn't spawned
+                if (x == gridWidth - 1 && y == gridHeight - 1)
+                {
+
 
                 }
             }
+        }
+
+        //Below here is stuff that is spawned more sparingly
+
+        //spawn shop
+        if (_requiredExits.upExitRequired && !shopSpawned && roomGridY == 1)
+        {
+            int x1 = 0;
+            int y1 = 0;
+            while (_intGrid[x1, y1] != 0)
+            {
+                x1 = Random.Range(0, gridWidth);
+                y1 = Random.Range(0, gridHeight);
+            }
+            _tileGrid[x1, y1] = ABX_Tile.spawnABX_Tile(ABX_ShopPrefab, transform, x1, y1);
+            _intGrid[x1, y1] = 1;
+            _boolGrid[x1, y1] = true;
+            shopSpawned = true;
         }
 
 
@@ -248,15 +292,33 @@ public class ABX_Room : Room
     }
     void SpawnWalls()
     {
+        bool firstDoorSpawned = false;
         // Record ground vals and assign colors
         for (int x = 0; x < gridWidth; x++)
             for (int y = 0; y < gridHeight; y++)
             {
                 ClearWall(x, y);
                 _tileGrid[x, y] = null;
+
+                //First unbreakable wall
+                if (roomGridY == 1 && y == gridHeight - 1)
+                {
+                    //spawning door
+                    if (_intGrid[x, y] == -1 && !firstDoorSpawned)
+                    {
+                        _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DoorPrefab, transform, x, y);
+                        firstDoorSpawned = true;
+                        continue;
+                    }
+
+                    _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_UnbreakableWallPrefab, transform, x, y);
+                    continue;
+                }
+
                 if (_boolGrid[x, y])
                 {
 
+                    //Dirt walls
                     if (_intGrid[x, y] == 1 ||
                         _intGrid[x, y] == 2 ||
                         _intGrid[x, y] == 3 ||
@@ -264,7 +326,7 @@ public class ABX_Room : Room
                         _intGrid[x, y] == 5 ||
                         _intGrid[x, y] == 6)
                     {
-                        _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DirtPrefab, transform, x, y);
+                        // _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DirtPrefab, transform, x, y);
                         continue;
                     }
                     _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_WallPrefab, transform, x, y);

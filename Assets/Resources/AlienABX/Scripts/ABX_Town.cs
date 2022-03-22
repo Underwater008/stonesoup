@@ -44,7 +44,7 @@ public class ABX_Town : ABX_Tile
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(1);
+        // Debug.Log(1);
         Tile tile = collision.GetComponent<Tile>();
         if (tile != null)
         {
