@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5657900122453575599}
   - component: {fileID: 4737821087435191301}
   - component: {fileID: -2436865016644597483}
-  - component: {fileID: 7230205315200202350}
+  - component: {fileID: -8576047986580185053}
   m_Layer: 0
   m_Name: ABX_BackPack
   m_TagString: Untagged
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.7614822, y: 2.718618}
   m_EdgeRadius: 0
---- !u!114 &7230205315200202350
+--- !u!114 &-8576047986580185053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,11 +119,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4290680103985690525}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3851a0910dea4f37b2cb9faa7a86a0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 937da513acef3401e8d59a16d639d4c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tags: 2
-  tileName: 
+  tileName: Backpack
   health: 1
   deathEffect: {fileID: 0}
   deathSFX: {fileID: 0}

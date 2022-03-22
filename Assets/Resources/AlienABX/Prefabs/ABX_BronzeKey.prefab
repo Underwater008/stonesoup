@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tags: 2
-  tileName: BronzeKey
+  tileName: Bronze Key
   health: 1
   deathEffect: {fileID: 0}
   deathSFX: {fileID: 0}
