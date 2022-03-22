@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ABX_xiao23HealingAll : Tile
+public class ABX_xiao23HealingAll : ABX_Tile
 {
 
     public override void pickUp(Tile tilePickingUsUp)
     {
-
+        /*
         Debug.Log("Picked up Apple");
 
         if (!hasTag(TileTags.CanBeHeld))
@@ -37,11 +37,11 @@ public class ABX_xiao23HealingAll : Tile
             tilePickingUsUp.restoreAllHealth();
             die();
         }
+        */
 
+        tilePickingUsUp.restoreAllHealth();
+        base.pickUp(tilePickingUsUp);
 
-        //base.pickUp(tilePickingUsUp);
-
-        //tilePickingUsUp.restoreAllHealth();
 
     }
     public override void useAsItem(Tile tileUsingUs)
@@ -52,7 +52,7 @@ public class ABX_xiao23HealingAll : Tile
         {
             xiao23InventorySelect.MainInventory.RemoveItem(this);
         }
-
+        base.useAsItem(tileUsingUs);
     }
 
     public override void dropped(Tile tileDroppingUs)
@@ -62,16 +62,5 @@ public class ABX_xiao23HealingAll : Tile
         {
             xiao23InventorySelect.MainInventory.RemoveItem(this);
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

@@ -36,4 +36,40 @@ public class ABX_Tile : Tile
 
         Destroy(gameObject);
     }
+
+    public override void pickUp(Tile tilePickingUsUp)
+    {
+        bool isAdded = false;
+        ABX_xiao23InventorySelect backpack = tilePickingUsUp.gameObject.GetComponentInChildren<ABX_xiao23InventorySelect>();
+        if (backpack != null && !hasTag(TileTags.Wearable))
+        {
+            isAdded = backpack.AddItem(this);
+        }
+        base.pickUp(tilePickingUsUp);
+        if (isAdded && backpack.GetItemCount(this) > 1)
+            Destroy(gameObject);
+    }
+
+    public override void useAsItem(Tile tileUsingUs)
+    {
+        ABX_xiao23InventorySelect backpack = _tileHoldingUs.gameObject.GetComponentInChildren<ABX_xiao23InventorySelect>();
+        if (backpack != null)
+        {
+            if (backpack.ConsumeCurrentItem(1) == 0)
+            {
+                die();
+            }
+        }
+        base.useAsItem(tileUsingUs);
+    }
+
+    public override void dropped(Tile tileDroppingUs)
+    {
+        ABX_xiao23InventorySelect backpack = _tileHoldingUs.gameObject.GetComponentInChildren<ABX_xiao23InventorySelect>();
+        if (backpack != null)
+        {
+            backpack.ConsumeCurrentItem(1);
+        }
+        base.dropped(tileDroppingUs);
+    }
 }

@@ -13,13 +13,9 @@ public class ABX_xiao23BackPack : Tile
     public override void pickUp(Tile tilePickingUsUp)
     {
 
-        Debug.Log("Picked up BackPack");
-        if (tilePickingUsUp is Player)
-        {
-
-            die();
-            Instantiate(InventoryUI);
-        }
+        //Debug.Log("Picked up BackPack");
+        Instantiate(InventoryUI, tilePickingUsUp.gameObject.transform);
+        die();
 
         //base.pickUp(tilePickingUsUp);
 
