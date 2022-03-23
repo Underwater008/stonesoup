@@ -15,6 +15,7 @@ public class ABX_Shovel : ABX_Tile
     }
     public override void useAsItem(Tile tileUsingUs)
     {
+        StartCoroutine(UseShovel());
         RaycastHit2D[] hit;
         hit = Physics2D.RaycastAll(_tileHoldingUs.transform.position, Vector3.down);
         foreach (RaycastHit2D hit2D in hit)
@@ -61,5 +62,12 @@ public class ABX_Shovel : ABX_Tile
         {
             tile.useAsItem(this);
         }
+    }
+
+    public override void dropped(Tile tileDroppingUs)
+    {
+        _groundCol.enabled = true;
+        _pickupCol.enabled = false;
+        base.dropped(tileDroppingUs);
     }
 }
