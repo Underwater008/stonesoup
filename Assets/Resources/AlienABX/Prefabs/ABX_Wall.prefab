@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tags: 1
-  tileName: 
+  tileName: Wall
   health: 1
   deathEffect: {fileID: 1581785524438676, guid: b55624526117b4928b6338cb05f43f68,
     type: 3}
