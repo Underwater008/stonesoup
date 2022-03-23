@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tags: 4097
-  tileName: 
+  tileName: Dirt Wall
   health: 1
   deathEffect: {fileID: 0}
   deathSFX: {fileID: 0}
@@ -131,3 +131,5 @@ MonoBehaviour:
   heldAngle: 0
   tileWereHolding: {fileID: 0}
   aimDirection: {x: 0, y: 0}
+  dropItemPrefab: {fileID: 0}
+  dropChance: 0
