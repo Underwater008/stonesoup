@@ -42,8 +42,8 @@ public class ABX_Shovel : ABX_Tile
         if (_tileHoldingUs != null)
         {
             // Let's try to rotate towards the aim direction. 
-            float aimAngle = Mathf.Atan2(_tileHoldingUs.aimDirection.y, _tileHoldingUs.aimDirection.x) * Mathf.Rad2Deg;
-            transform.localEulerAngles = new Vector3(0, 0, aimAngle);
+            float aimAngle = Mathf.Atan2(_tileHoldingUs.aimDirection.y, _tileHoldingUs.aimDirection.x) * Mathf.Rad2Deg - 90;
+            transform.localEulerAngles = new Vector3(0, 0, aimAngle );
         }
     }
 
@@ -53,7 +53,7 @@ public class ABX_Shovel : ABX_Tile
         base.pickUp(tilePickingUsUp);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         ABX_Tile tile = collision.gameObject.GetComponent<ABX_Tile>();
         if (tile == null)
