@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 4169918119924474378}
   - component: {fileID: -8741019469231503726}
   m_Layer: 0
-  m_Name: ABX_FirstRS
+  m_Name: ABX_RS3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   heldAngle: 0
   tileWereHolding: {fileID: 0}
   aimDirection: {x: 0, y: 0}
-  requiredObject: {fileID: 4739779953149236427, guid: d00bf20d91116428b85509d75f3938dc,
+  requiredObject: {fileID: -8977522282304464064, guid: 83b5fd38e8d4711469354b5a132cec0d,
     type: 3}
   requiredAmount: 3
   dropItemPrefab: {fileID: 4290680103985690525, guid: ea7ba37ad19a34ad9b2ecf16d812a9c2,
