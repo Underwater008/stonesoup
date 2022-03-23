@@ -5,25 +5,35 @@ using UnityEngine;
 public class ABX_Shear : ABX_Tile
 {
     public float range;
-    Tile _target;
+    List<ABX_Tile> _target = new List<ABX_Tile>();
 
     public override void useAsItem(Tile tileUsingUs)
     {
         if (_target == null)
             return;
-        _target.useAsItem(this);
+        foreach (ABX_Tile tile in _target)
+            tile.useAsItem(this);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Tile tile = collision.gameObject.GetComponent<Tile>();
+        ABX_Tile tile = collision.gameObject.GetComponent<ABX_Tile>();
         if (tile == null)
             return;
-        if (!tile.hasTag(TileTags.Plant))
+        if (!tile.hasTag(TileTags.Plant) && !tile.hasTag(TileTags.Water))
             return;
-        _target = tile;
+        _target.Add(tile);
     }
 
-    void Update()
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        ABX_Tile tile = collision.gameObject.GetComponent<ABX_Tile>();
+        if (tile == null)
+            return;
+        if (_target.Contains(tile))
+            _target.Remove(tile);
+    }
+
+    /*void Update()
     {
         if (_target != null)
         {
@@ -33,4 +43,5 @@ public class ABX_Shear : ABX_Tile
             }
         }
     }
+    */
 }

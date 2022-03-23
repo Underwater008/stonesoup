@@ -10,8 +10,20 @@ public class ABX_DirtWall : ABX_Tile
 
     public override void useAsItem(Tile tileUsingUs)
     {
-        if (Random.Range(0f, 1f) < dropChance)
+        takeDamage(tileUsingUs, 9999, DamageType.Explosive);
+    }
+
+    protected override void die()
+    {
+        if (dropItemPrefab != null && Random.Range(0f, 1f) < dropChance)
             Instantiate(dropItemPrefab, transform.position, Quaternion.identity);
-        takeDamage(tileUsingUs, 9999);
+        base.die();
+    }
+
+    public override void takeDamage(Tile tileDamagingUs, int damageAmount, DamageType damageType)
+    {
+        if (damageType != DamageType.Explosive)
+            return;
+        base.takeDamage(tileDamagingUs, damageAmount, damageType);
     }
 }

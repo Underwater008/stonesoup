@@ -15,6 +15,7 @@ public class ABX_Shovel : ABX_Tile
     }
     public override void useAsItem(Tile tileUsingUs)
     {
+        StartCoroutine(UseShovel());
         RaycastHit2D[] hit;
         hit = Physics2D.RaycastAll(_tileHoldingUs.transform.position, Vector3.down);
         foreach (RaycastHit2D hit2D in hit)
@@ -41,8 +42,8 @@ public class ABX_Shovel : ABX_Tile
         if (_tileHoldingUs != null)
         {
             // Let's try to rotate towards the aim direction. 
-            float aimAngle = Mathf.Atan2(_tileHoldingUs.aimDirection.y, _tileHoldingUs.aimDirection.x) * Mathf.Rad2Deg;
-            transform.localEulerAngles = new Vector3(0, 0, aimAngle);
+            float aimAngle = Mathf.Atan2(_tileHoldingUs.aimDirection.y, _tileHoldingUs.aimDirection.x) * Mathf.Rad2Deg - 90;
+            transform.localEulerAngles = new Vector3(0, 0, aimAngle );
         }
     }
 
@@ -52,7 +53,7 @@ public class ABX_Shovel : ABX_Tile
         base.pickUp(tilePickingUsUp);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         ABX_Tile tile = collision.gameObject.GetComponent<ABX_Tile>();
         if (tile == null)
@@ -61,5 +62,12 @@ public class ABX_Shovel : ABX_Tile
         {
             tile.useAsItem(this);
         }
+    }
+
+    public override void dropped(Tile tileDroppingUs)
+    {
+        _groundCol.enabled = true;
+        _pickupCol.enabled = false;
+        base.dropped(tileDroppingUs);
     }
 }
