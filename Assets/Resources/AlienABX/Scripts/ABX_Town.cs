@@ -5,9 +5,9 @@ using TMPro;
 
 public class ABX_Town : ABX_Tile
 {
-    int _wood;
-    int _clay;
-    int _gold;
+    int _mineral;
+    int _plant;
+    int _tissue;
 
     int _level;
     int _startLevel = 0;
@@ -36,7 +36,7 @@ public class ABX_Town : ABX_Tile
         }
         _collider = GetComponent<Collider2D>();
         _startHealth = health;
-        _gold = _startGold;
+        _tissue = _startGold;
         _level = _startLevel;
         _levelTMP.text = _level.ToString();
         _reqTMP.text = _townRequirements[_level];
@@ -71,13 +71,13 @@ public class ABX_Town : ABX_Tile
 
         if (t.tileName.Equals("Clay"))
         {
-            _clay++;
+            _plant++;
             Clay c = (Clay)t;
             c.delete();
         }
         if (t.tileName.Equals("Wood"))
         {
-            _wood++;
+            _mineral++;
             Wood w = (Wood)t;
             w.delete();
         }
@@ -102,7 +102,7 @@ public class ABX_Town : ABX_Tile
     {
         if (_level >= 1)
             return false;
-        if (_wood < 1)
+        if (_mineral < 1)
             return false;
         return true;
     }
@@ -110,7 +110,7 @@ public class ABX_Town : ABX_Tile
     {
         if (_level >= 2)
             return false;
-        if (_clay < 2)
+        if (_plant < 2)
             return false;
         return true;
     }
