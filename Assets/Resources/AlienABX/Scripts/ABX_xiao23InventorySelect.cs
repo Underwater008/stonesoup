@@ -15,12 +15,15 @@ public class ABX_xiao23InventorySelect : MonoBehaviour
     GameObject[] _items = new GameObject[SIZE];
     int[] _count = new int[SIZE];
     int _currentIndex = 0;
+
+    ABX_Player player;
     public void Awake()
     {
         if (MainInventory != null)
             Destroy(gameObject);
         else
             MainInventory = this;
+
     }
     void Start()
     {
@@ -31,7 +34,7 @@ public class ABX_xiao23InventorySelect : MonoBehaviour
             iconUI[i].sprite = null;
             numberUI[i].text = null;
         }
-
+        player = GetComponentInParent<ABX_Player>();
     }
     /*
     public bool PutItemInBag(Tile tile)
@@ -148,6 +151,18 @@ public class ABX_xiao23InventorySelect : MonoBehaviour
         }
         */
         //Get the current item index
+        if (Input.mouseScrollDelta.y < 0)
+        {
+            _currentIndex += 1;
+        }
+        if (Input.mouseScrollDelta.y > 0)
+        {
+            _currentIndex -= 1;
+        }
+        _currentIndex = _currentIndex % 6;
+        if (_currentIndex < 0)
+            _currentIndex += 6;
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
             _currentIndex = 0;
         else if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -161,12 +176,17 @@ public class ABX_xiao23InventorySelect : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha6))
             _currentIndex = 5;
 
+        if (_items[_currentIndex] == null)
+            player.tileWereHolding = null;
+        else
+            player.tileWereHolding = _items[_currentIndex].GetComponent<ABX_Tile>();
+
         //Initialize and clear out items that no longer exist
         for (int i = 0; i < SIZE; i++)
         {
             if (_items[i] == null)
             {
-                iconUI[i].sprite = null;
+                //iconUI[_currentIndex].sprite = null;
                 iconUI[i].gameObject.SetActive(false);
                 numberUI[i].text = "";
                 if (i == _currentIndex)
@@ -176,29 +196,28 @@ public class ABX_xiao23InventorySelect : MonoBehaviour
                 continue;
             }
 
+            //iconUI[i].gameObject.SetActive(true);
+            //iconUI[i].sprite = _items[_currentIndex].GetComponent<SpriteRenderer>().sprite;
+
             numberUI[i].text = "" + _count[i];
             if (i == _currentIndex)
             {
-                iconUI[i].gameObject.SetActive(true);
-                iconUI[i].sprite = _items[_currentIndex].GetComponent<SpriteRenderer>().sprite;
+
                 _items[i].SetActive(true);
-                backgroundUI[i].GetComponent<Image>().color = new Color(255f / 255f, 178f / 255f, 32f / 255f);
+                backgroundUI[i].color = new Color(255f / 255f, 178f / 255f, 32f / 255f);
             }
             else
             {
                 _items[i].SetActive(false);
-                backgroundUI[i].GetComponent<Image>().color = Color.white;
+                backgroundUI[i].color = Color.white;
             }
-        }
-
-        //Enable items
-        if (_items[_currentIndex] != null)
-        {
-            _items[_currentIndex].SetActive(true);
         }
     }
 
-    public bool AddItem (ABX_Tile tile)
+    //return 0 if the item is a duplicate
+    //return 1 if the item is not a duplicate
+    //return -1 if the item is not added
+    public int AddItem (ABX_Tile tile)
     {
         for (int i = 0; i < SIZE; i++)
         {
@@ -207,7 +226,7 @@ public class ABX_xiao23InventorySelect : MonoBehaviour
             if (tile.tileName.Equals(_items[i].GetComponent<ABX_Tile>().tileName))
             {
                 _count[i]++;
-                return true;
+                return 0;
             }
         }
 
@@ -218,10 +237,12 @@ public class ABX_xiao23InventorySelect : MonoBehaviour
             {
                 _items[i] = tile.gameObject;
                 _count[i]++;
-                return true;
+                iconUI[i].gameObject.SetActive(true);
+                iconUI[i].sprite = tile.gameObject.GetComponent<SpriteRenderer>().sprite;
+                return 1;
             }
         }
-        return false;
+        return -1;
     }
 
     void Update()
@@ -292,9 +313,13 @@ public class ABX_xiao23InventorySelect : MonoBehaviour
         else
         {
             _count[_currentIndex] -= cost;
+            numberUI[_currentIndex].text = "" + _count[_currentIndex];
             if (_count[_currentIndex] == 0)
             {
                 _items[_currentIndex] = null;
+                iconUI[_currentIndex].sprite = null;
+                iconUI[_currentIndex].gameObject.SetActive(false);
+                numberUI[_currentIndex].text = "";
             }
             return _count[_currentIndex];
         }

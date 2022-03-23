@@ -38,21 +38,32 @@ public class ABX_xiao23HealingAll : ABX_Tile
             die();
         }
         */
-
-        tilePickingUsUp.restoreAllHealth();
         base.pickUp(tilePickingUsUp);
 
 
     }
     public override void useAsItem(Tile tileUsingUs)
     {
-        base.useAsItem(tileUsingUs);
-        Destroy(gameObject);
+        /*Destroy(gameObject);
         if (xiao23InventorySelect.MainInventory != null)
         {
             xiao23InventorySelect.MainInventory.RemoveItem(this);
         }
-        base.useAsItem(tileUsingUs);
+        base.useAsItem(tileUsingUs);*/
+        if (_tileHoldingUs.hasTag(TileTags.Player))
+        {
+            tileUsingUs.restoreAllHealth();
+            int remain = ABX_xiao23InventorySelect.MainInventory.ConsumeCurrentItem(1);
+            if (remain == 0)
+            {
+                die();
+            }
+        }
+        else
+        {
+            tileUsingUs.restoreAllHealth();
+            die();
+        }
     }
 
     /*

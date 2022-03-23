@@ -27,12 +27,31 @@ public class ABX_Player : Player
 			}
 		}
 
-		// If we press space, we're attempting to either pickup, drop, or switch items.
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			bool pickedUpOrDroppedItem = false;
-
-			// If we successully dropped the item
+			// Check to see if we're on top of an item that can be held
+			int numObjectsFound = _body.Cast(Vector2.zero, _maybeRaycastResults);
+			for (int i = 0; i < numObjectsFound && i < _maybeRaycastResults.Length; i++)
+			{
+				RaycastHit2D result = _maybeRaycastResults[i];
+				ABX_Tile tileHit = result.transform.GetComponent<ABX_Tile>();
+				if (tileHit.hasTag(TileTags.CanBeHeld))
+				{
+					tileHit.pickUp(this);
+					AudioManager.playAudio(pickupDropSound);
+					break;
+				}
+			}
+			if (numObjectsFound == 0)
+            {
+				if (tileWereHolding != null)
+                {
+					tileWereHolding.dropped(this);
+					AudioManager.playAudio(pickupDropSound);
+				}
+			}
+		}
+			/*// If we successully dropped the item
 			if (tileWereHolding == null)
 			{
 				// Check to see if we're on top of an item that can be held
@@ -42,13 +61,13 @@ public class ABX_Player : Player
 					
 					RaycastHit2D result = _maybeRaycastResults[i];
 					Tile tileHit = result.transform.GetComponent<Tile>();
-					/*
+					*//*
 					// Ignore the tile we just dropped
 					if (tileHit == null || tileHit == _lastTileWeHeld)
 					{
 						continue;
 					}
-					*/
+					*//*
 					if (tileHit.hasTag(TileTags.CanBeHeld))
 					{
 						tileHit.pickUp(this);
@@ -93,10 +112,10 @@ public class ABX_Player : Player
 					AudioManager.playAudio(pickupDropSound);
 				}
 			}
-		}
+		}*/
 
-		// If we click the mouse, we try to use whatever item we're holding.
-		if (Input.GetMouseButtonDown(0))
+			// If we click the mouse, we try to use whatever item we're holding.
+			if (Input.GetMouseButtonDown(0))
 		{
 			if (tileWereHolding != null)
 			{

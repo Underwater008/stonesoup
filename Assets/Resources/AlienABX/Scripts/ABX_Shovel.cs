@@ -15,6 +15,8 @@ public class ABX_Shovel : ABX_Tile
     }
     public override void useAsItem(Tile tileUsingUs)
     {
+        if (!gameObject.activeSelf)
+            return;
         StartCoroutine(UseShovel());
         /*
         RaycastHit2D[] hit;

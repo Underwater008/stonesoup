@@ -39,37 +39,107 @@ public class ABX_Tile : Tile
 
     public override void pickUp(Tile tilePickingUsUp)
     {
-        bool isAdded = false;
+        if (!tilePickingUsUp.hasTag(TileTags.Player))
+        {
+            base.pickUp(tilePickingUsUp);
+            return;
+        }
         ABX_xiao23InventorySelect backpack = tilePickingUsUp.gameObject.GetComponentInChildren<ABX_xiao23InventorySelect>();
-        if (backpack != null && !hasTag(TileTags.Wearable))
+        if (backpack == null)
+        {
+            base.pickUp(tilePickingUsUp);
+            return;
+        }
+        /*if (!hasTag(TileTags.Wearable))
         {
             isAdded = backpack.AddItem(this);
-        }
-        base.pickUp(tilePickingUsUp);
-        if (isAdded && backpack.GetItemCount(this) > 1)
-            Destroy(gameObject);
-    }
-
-    public override void useAsItem(Tile tileUsingUs)
-    {
-        ABX_xiao23InventorySelect backpack = _tileHoldingUs.gameObject.GetComponentInChildren<ABX_xiao23InventorySelect>();
-        if (backpack != null)
+        }*/
+        int isAdded = backpack.AddItem(this);
+        if (isAdded == 0)
         {
-            if (backpack.ConsumeCurrentItem(1) == 0)
-            {
-                die();
-            }
+            Destroy(gameObject);
         }
-        base.useAsItem(tileUsingUs);
+        else if (isAdded == 1)
+        {
+            base.pickUp(tilePickingUsUp);
+            gameObject.SetActive(false);
+        }
     }
 
     public override void dropped(Tile tileDroppingUs)
     {
-        ABX_xiao23InventorySelect backpack = _tileHoldingUs.gameObject.GetComponentInChildren<ABX_xiao23InventorySelect>();
-        if (backpack != null)
+        if (!tileDroppingUs.hasTag(TileTags.Player))
         {
-            backpack.ConsumeCurrentItem(1);
+            base.dropped(tileDroppingUs);
+            return;
         }
-        base.dropped(tileDroppingUs);
+        ABX_xiao23InventorySelect backpack = _tileHoldingUs.gameObject.GetComponentInChildren<ABX_xiao23InventorySelect>();
+        if (backpack == null)
+        {
+            base.dropped(tileDroppingUs);
+            return;
+        }
+        int remain = backpack.ConsumeCurrentItem(1);
+        if (remain == 0)
+        {
+            base.dropped(tileDroppingUs);
+        }
+        else
+        {
+            GameObject obj = Instantiate(gameObject, transform.position, Quaternion.identity);
+            obj.transform.parent = null;
+            obj.GetComponent<ABX_Tile>().addTag(TileTags.CanBeHeld);
+
+        }
+    }
+
+    protected override void die()
+    {
+        if (_tileHoldingUs == null)
+        {
+            base.die();
+            return;
+        }
+        if (!_tileHoldingUs.hasTag(TileTags.Player))
+        {
+            base.die();
+            return;
+        }
+        ABX_xiao23InventorySelect backpack = _tileHoldingUs.gameObject.GetComponentInChildren<ABX_xiao23InventorySelect>();
+        if (backpack == null || hasTag(TileTags.Player) || !_tileHoldingUs.hasTag(TileTags.Player))
+        {
+            base.die();
+            return;
+        }
+        int remain = backpack.ConsumeCurrentItem(1);
+        if (remain > 0)
+        {
+            ABX_Tile newTile = Instantiate(gameObject).GetComponent<ABX_Tile>();
+            newTile._tileHoldingUs = _tileHoldingUs;
+            newTile.die();
+        }
+        else
+        {
+            base.die();
+        }
+    }
+
+    public override void useAsItem(Tile tileUsingUs)
+    {
+        if (!tileUsingUs.hasTag(TileTags.Player))
+        {
+            base.useAsItem(tileUsingUs);
+            return;
+        }
+        ABX_xiao23InventorySelect backpack = _tileHoldingUs.gameObject.GetComponentInChildren<ABX_xiao23InventorySelect>();
+        if (backpack == null)
+        {
+            base.useAsItem(tileUsingUs);
+            return;
+        }
+        if (backpack.GetCurrentCount() == 0)
+        {
+            die();
+        }
     }
 }

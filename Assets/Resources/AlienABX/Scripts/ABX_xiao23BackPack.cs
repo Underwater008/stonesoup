@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 
 
-public class ABX_xiao23BackPack : Tile
+public class ABX_xiao23BackPack : ABX_Tile
 {
     public GameObject InventoryUI;
     //public GameObject Parent;

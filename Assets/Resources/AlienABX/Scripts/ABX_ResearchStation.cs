@@ -55,13 +55,11 @@ public class ABX_ResearchStation : ABX_Tile
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Enter");
         Tile tile = collision.gameObject.GetComponent<Tile>();
         if (tile == null)
         {
             return;
         }
-        Debug.Log("Is tile");
         if (tile.hasTag(TileTags.Player))
         {
             UpdateUI();
