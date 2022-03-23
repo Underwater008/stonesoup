@@ -31,10 +31,13 @@ public class ABX_Player : Player
 		{
 			// Check to see if we're on top of an item that can be held
 			int numObjectsFound = _body.Cast(Vector2.zero, _maybeRaycastResults);
+			int canPickUpItmes = 0;
 			for (int i = 0; i < numObjectsFound && i < _maybeRaycastResults.Length; i++)
 			{
 				RaycastHit2D result = _maybeRaycastResults[i];
 				ABX_Tile tileHit = result.transform.GetComponent<ABX_Tile>();
+				if (tileHit.hasTag(TileTags.CanBeHeld))
+					canPickUpItmes++;
 				if (tileHit.hasTag(TileTags.CanBeHeld))
 				{
 					tileHit.pickUp(this);
@@ -42,7 +45,7 @@ public class ABX_Player : Player
 					break;
 				}
 			}
-			if (numObjectsFound == 0)
+			if (canPickUpItmes == 0)
             {
 				if (tileWereHolding != null)
                 {

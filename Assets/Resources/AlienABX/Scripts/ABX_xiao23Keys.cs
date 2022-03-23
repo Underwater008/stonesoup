@@ -6,7 +6,7 @@ public class ABX_xiao23Keys : ABX_Tile
 {
 
 
-    public override void pickUp(Tile tilePickingUsUp)
+    /*public override void pickUp(Tile tilePickingUsUp)
     {
 
         if (tileName == "BronzeKey")
@@ -47,8 +47,8 @@ public class ABX_xiao23Keys : ABX_Tile
 
         //tilePickingUsUp.restoreAllHealth();
 
-    }
-    public override void useAsItem(Tile tileUsingUs)
+    }*/
+    /*public override void useAsItem(Tile tileUsingUs)
     {
         base.useAsItem(tileUsingUs);
         if (!(tileUsingUs is xiao23Doors))
@@ -59,29 +59,14 @@ public class ABX_xiao23Keys : ABX_Tile
             xiao23InventorySelect.MainInventory.RemoveItem(this);
         }
 
-    }
+    }*/
 
-    public override void dropped(Tile tileDroppingUs)
+    /*public override void dropped(Tile tileDroppingUs)
     {
         base.dropped(tileDroppingUs);
         if (xiao23InventorySelect.MainInventory != null)
         {
             xiao23InventorySelect.MainInventory.RemoveItem(this);
         }
-    }
-    public void OnDisable()
-    {
-
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    }*/
 }

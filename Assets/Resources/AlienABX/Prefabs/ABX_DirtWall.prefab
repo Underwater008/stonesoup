@@ -131,6 +131,11 @@ MonoBehaviour:
   heldAngle: 0
   tileWereHolding: {fileID: 0}
   aimDirection: {x: 0, y: 0}
-  dropItemPrefab: {fileID: 224590343788166565, guid: a2fc33174513cd644939cc625f1ba527,
+  commonDrop: {fileID: 224590343788166565, guid: a2fc33174513cd644939cc625f1ba527,
     type: 3}
-  dropChance: 0.5
+  rareDrop: {fileID: 0}
+  commonChance: 0.2
+  rareChance: 0
+  minDrop: 1
+  maxDrop: 1
+  offsetRange: 1

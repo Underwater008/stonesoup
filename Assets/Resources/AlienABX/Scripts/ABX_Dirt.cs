@@ -13,6 +13,7 @@ public class ABX_Dirt : ABX_Tile
     [Header("Drops")]
     public GameObject commonDrop;
     public GameObject rareDrop;
+    public float commonChance;
     public float rareChance;
     public int minDrop;
     public int maxDrop;
@@ -48,7 +49,7 @@ public class ABX_Dirt : ABX_Tile
             {
                 Instantiate(rareDrop, transform.position + offsetVector, Quaternion.identity);
             }
-            else
+            else if (Random.Range(0f, 1f) < commonChance)
             {
                 Instantiate(commonDrop, transform.position + offsetVector, Quaternion.identity);
             }
