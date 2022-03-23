@@ -401,7 +401,7 @@ public class ABX_Room : Room
                     // spawning door
                     if (_intGrid[x, y] == -1 && !firstDoorSpawned)
                     {
-                        // _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DoorPrefab, transform, x, y);
+                        _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DoorPrefab, transform, x, y);
                         firstDoorSpawned = true;
                         continue;
                     }
@@ -415,7 +415,7 @@ public class ABX_Room : Room
                     //spawning door
                     if (_intGrid[x, y] == -2 && !secondDoorSpawned)
                     {
-                        // _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DoorPrefab, transform, x, y);
+                        _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DoorPrefab, transform, x, y);
                         secondDoorSpawned = true;
                         continue;
                     }
