@@ -28,7 +28,25 @@ public class ABX_Tile : Tile
         return tile;
     }
 
+    public void ABX_die()
+    {
+        _alive = false;
 
+        if (tileWereHolding != null)
+        {
+            tileWereHolding.dropped(this);
+        }
+        if (deathEffect != null)
+        {
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+        }
+        if (deathSFX != null)
+        {
+            AudioManager.playAudio(deathSFX);
+        }
+
+        Destroy(gameObject);
+    }
 
     public virtual void remove()
     {
