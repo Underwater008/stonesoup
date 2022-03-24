@@ -22,6 +22,27 @@ public class ABX_AlienSheep : ABX_BasicAICreature
     public int maxDrop;
     public float offsetRange;
 
+    private int MehhhDelay;
+    //private bool Mehhhed = false;
+    public AudioSource Sheep;
+
+    private void Update()
+    {
+        
+        StartCoroutine(Mehhh());
+
+
+    }
+
+    IEnumerator Mehhh()
+    {
+        MehhhDelay = Random.Range(1, 3);
+        yield return new WaitForSeconds(MehhhDelay);
+        Sheep.Play();
+    }
+
+
+
     public override void useAsItem(Tile tileUsingUs)
     {
         removeTag(TileTags.Water);

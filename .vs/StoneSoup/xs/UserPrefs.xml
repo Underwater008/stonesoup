@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{4AF5F5EC-B76F-DF89-CC9B-315C8814C037}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Resources/AlienABX/Scripts/ABX_Door.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Resources/AlienABX/Scripts/ABX_AlienSheep.cs">
     <Files>
       <File FileName="Assets/Resources/AlienABX/Scripts/ABX_Player.cs" Line="30" Column="1" />
       <File FileName="Assets/Resources/AlienABX/Scripts/ABX_Shovel.cs" />
       <File FileName="Assets/Resources/AlienABX/Scripts/ABX_Resource.cs" />
       <File FileName="Assets/Resources/AlienABX/Scripts/ABX_Tile.cs" />
       <File FileName="Assets/Scripts/GameObjects/Tile.cs" />
-      <File FileName="Assets/Scripts/GameObjects/Player.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GameObjects/Player.cs" />
       <File FileName="Assets/Resources/AlienABX/Scripts/ABX_Door.cs" Line="11" Column="25" />
+      <File FileName="Assets/Resources/AlienABX/Scripts/ABX_AlienSheep.cs" Line="25" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,7 +18,7 @@
               <Node name="Resources" expanded="True">
                 <Node name="AlienABX" expanded="True">
                   <Node name="Scripts" expanded="True">
-                    <Node name="ABX_Door.cs" selected="True" />
+                    <Node name="ABX_AlienSheep.cs" selected="True" />
                   </Node>
                 </Node>
               </Node>
@@ -32,7 +33,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="a79f60d1-dcd7-41a8-b2ae-45de84ad82e8" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e40d7ac8-be98-493e-9f1f-81ec563195ef" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
