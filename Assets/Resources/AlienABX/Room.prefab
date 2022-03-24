@@ -252,6 +252,8 @@ MonoBehaviour:
     type: 3}
   ABX_AlienPrefab: {fileID: 4121351859773119108, guid: 2b99968eecf1df74fbb041316d37785a,
     type: 3}
+  ABX_BombPrefab: {fileID: 8196001720433648083, guid: c9fa1e617c5e41c48aa925fbf31ec450,
+    type: 3}
   automataSteps: 20
   caDeathLimit: 3
   caBirthLimit: 5

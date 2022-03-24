@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ABX_LevelGenerator : LevelGenerator
 {
     [HideInInspector] public int maxRoomVal;
     [HideInInspector] public bool levelGenerationDone = false;
+    void RestartLevelGen()
+    {
+        SceneManager.LoadScene("PlayScene");
+    }
     public override void generateCombinedRoomModeLevel()
     {
         levelGenerationDone = false;
@@ -167,6 +172,11 @@ public class ABX_LevelGenerator : LevelGenerator
             currentRoomY = nextRoomY;
             entranceDir = oppositeDir(exitDir);
             roomToSpawn = nextRoomToSpawn();
+        }
+        if (maxRoomVal < 8)
+        {
+            RestartLevelGen();
+            return;
         }
 
         for (int x = 0; x < numXRooms; x++)

@@ -22,6 +22,7 @@ public class ABX_Room : Room
     public GameObject ABX_ShovelPrefab;
     public GameObject ABX_GasMaskPrefab;
     public GameObject ABX_AlienPrefab;
+    public GameObject ABX_BombPrefab;
 
 
 
@@ -228,14 +229,24 @@ public class ABX_Room : Room
                     _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_PlantPrefab, transform, x, y);
                     _intGrid[x, y] = 1;
                     _boolGrid[x, y] = true;
+                    continue;
                 }
                 // Alien
-                if (Random.Range(0f, 1f) < .3f && _intGrid[x, y] == 0 && roomGridY == 3)
+                if (Random.Range(0f, 1f) < .2f && _intGrid[x, y] == 0 && roomGridY == 3)
                 {
                     _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_AlienPrefab, transform, x, y);
                     _intGrid[x, y] = 1;
                     _boolGrid[x, y] = true;
+                    continue;
                 }
+                // //Bomb
+                // if (Random.Range(0f, 1f) < .1f && _intGrid[x, y] == 0)
+                // {
+                //     _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_BombPrefab, transform, x, y);
+                //     _intGrid[x, y] = 1;
+                //     _boolGrid[x, y] = true;
+                //     continue;
+                // }
 
 
                 //if something required in each room hasn't spawned
@@ -432,6 +443,15 @@ public class ABX_Room : Room
                 //Second unbreakable wall
                 if (roomGridY == 3 && y == 0)
                 {
+                    if (generator.maxRoomVal <= 8)
+                    {
+                        if (Random.Range(0, 1) < .1f)
+                        {
+                            _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DoorPrefab, transform, x, y);
+                            continue;
+
+                        }
+                    }
                     //spawning door
                     if (_intGrid[x, y] == -2 && !secondDoorSpawned)
                     {
