@@ -23,13 +23,17 @@ public class ABX_AlienSheep : ABX_BasicAICreature
     public float offsetRange;
 
     private int MehhhDelay;
-    //private bool Mehhhed = false;
+    private bool Mehhhed = false;
     public AudioSource Sheep;
 
     private void Update()
     {
-        
-        StartCoroutine(Mehhh());
+        if(Mehhhed == false)
+        {
+          StartCoroutine(Mehhh());
+          Sheep.Play();
+          print(Mehhhed);
+        }
 
 
     }
@@ -38,7 +42,8 @@ public class ABX_AlienSheep : ABX_BasicAICreature
     {
         MehhhDelay = Random.Range(1, 3);
         yield return new WaitForSeconds(MehhhDelay);
-        Sheep.Play();
+        Mehhhed = true;
+        
     }
 
 

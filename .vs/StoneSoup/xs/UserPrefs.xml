@@ -1,39 +1,17 @@
 ﻿<Properties StartupConfiguration="{4AF5F5EC-B76F-DF89-CC9B-315C8814C037}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Resources/AlienABX/Scripts/ABX_AlienSheep.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Resources/AlienABX/Scripts/ABX_Shovel.cs">
     <Files>
-      <File FileName="Assets/Resources/AlienABX/Scripts/ABX_Player.cs" Line="30" Column="1" />
-      <File FileName="Assets/Resources/AlienABX/Scripts/ABX_Shovel.cs" />
+      <File FileName="Assets/Resources/AlienABX/Scripts/ABX_AlienSheep.cs" Line="45" Column="1" />
       <File FileName="Assets/Resources/AlienABX/Scripts/ABX_Resource.cs" />
       <File FileName="Assets/Resources/AlienABX/Scripts/ABX_Tile.cs" />
-      <File FileName="Assets/Scripts/GameObjects/Tile.cs" />
+      <File FileName="Assets/Resources/AlienABX/Scripts/ABX_Player.cs" Line="33" Column="1" />
       <File FileName="Assets/Scripts/GameObjects/Player.cs" />
-      <File FileName="Assets/Resources/AlienABX/Scripts/ABX_Door.cs" Line="11" Column="25" />
-      <File FileName="Assets/Resources/AlienABX/Scripts/ABX_AlienSheep.cs" Line="25" Column="1" />
+      <File FileName="Assets/Resources/AlienABX/Scripts/ABX_Shovel.cs" Line="11" Column="21" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="StoneSoup" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Resources" expanded="True">
-                <Node name="AlienABX" expanded="True">
-                  <Node name="Scripts" expanded="True">
-                    <Node name="ABX_AlienSheep.cs" selected="True" />
-                  </Node>
-                </Node>
-              </Node>
-              <Node name="Scripts" expanded="True">
-                <Node name="GameObjects" expanded="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e40d7ac8-be98-493e-9f1f-81ec563195ef" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c99c2d59-96f1-4c81-85eb-450dd830d603" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

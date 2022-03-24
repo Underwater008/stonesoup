@@ -8,6 +8,8 @@ public class ABX_Shovel : ABX_Tile
     CircleCollider2D _pickupCol;
     BoxCollider2D _groundCol;
 
+    public Animator shovelAnimator;
+
     private void Awake()
     {
         _pickupCol = GetComponent<CircleCollider2D>();
@@ -15,6 +17,7 @@ public class ABX_Shovel : ABX_Tile
     }
     public override void useAsItem(Tile tileUsingUs)
     {
+        shovelAnimator.SetTrigger("shov");
         if (!gameObject.activeSelf)
             return;
         StartCoroutine(UseShovel());
