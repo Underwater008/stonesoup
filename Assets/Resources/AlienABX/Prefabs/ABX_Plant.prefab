@@ -109,7 +109,8 @@ MonoBehaviour:
   commonDrop: {fileID: 133496208266137786, guid: 5ad953bc79bd2e748b3696e63f7fc937,
     type: 3}
   rareDrop: {fileID: 0}
-  rareChance: 0.2
+  commonChance: 1
+  rareChance: 0
   minDrop: 1
   maxDrop: 3
   offsetRange: 1
