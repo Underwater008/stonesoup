@@ -605,7 +605,8 @@ MonoBehaviour:
   tags: 16384
   tileName: Plant
   health: 999
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 6843520038686809946, guid: 05fb6106d12fd4fef8887a96ad0159d4,
+    type: 3}
   deathSFX: {fileID: 0}
   heldOffset: {x: 0.2, y: -0.1}
   heldAngle: 0

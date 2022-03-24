@@ -125,8 +125,8 @@ MonoBehaviour:
   tileWereHolding: {fileID: 0}
   aimDirection: {x: 0, y: 0}
   resourceTag: 1
-  SFPickUpMine: {fileID: 0}
-  SFPickUpPlant: {fileID: 0}
+  SFPickUpMine: {fileID: 8300000, guid: c39f4e4d5900a4ce5a42c324bd77c7f4, type: 3}
+  SFPickUpPlant: {fileID: 8300000, guid: c39f4e4d5900a4ce5a42c324bd77c7f4, type: 3}
   SFPickUpTissue: {fileID: 0}
 --- !u!1 &3897085906997013201
 GameObject:

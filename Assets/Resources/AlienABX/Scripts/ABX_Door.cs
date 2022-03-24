@@ -22,23 +22,13 @@ public class ABX_Door : ABX_Tile
     {
         if (collision.GetComponent<Tile>().tileName.Equals(keyTile.tileName) && IsInHand(collision.transform))
         {
-
+            var prefab = pickUpEUI;
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 collision.GetComponent<Tile>().useAsItem(this);
                 collision.GetComponent<ABX_Tile>().ABX_die();
                 die();
             }
-        }
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.GetComponent<Tile>().tileName.Equals(keyTile.tileName) && IsInHand(collision.transform))
-        {
-
-
-            var prefab = pickUpEUI;
         }
     }
 
