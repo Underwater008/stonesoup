@@ -222,29 +222,22 @@ public class ABX_Room : Room
             {
 
                 //if nothing is in the tile
-                if (_intGrid[x, y] == 0)
-                {
-                    // Plant
-                    if (Random.Range(0f, 1f) < .5f)
-                    {
-                        _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_PlantPrefab, transform, x, y);
-                        _intGrid[x, y] = 1;
-                        _boolGrid[x, y] = true;
-                    }
 
-                    //spawning the shop
-                    if (_requiredExits.upExitRequired)
-                    {
-                        // if (Random.Range(0f, 1f) < .3f && !shopSpawned)
-                        // {
-                        //     _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_ShopPrefab, transform, x, y);
-                        //     _intGrid[x, y] = 1;
-                        //     _boolGrid[x, y] = true;
-                        //     shopSpawned = true;
-                        //     continue;
-                        // }
-                    }
+                // Plant
+                if (Random.Range(0f, 1f) < .5f && _intGrid[x, y] == 0)
+                {
+                    _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_PlantPrefab, transform, x, y);
+                    _intGrid[x, y] = 1;
+                    _boolGrid[x, y] = true;
                 }
+                // Alien
+                if (Random.Range(0f, 1f) < .5f && _intGrid[x, y] == 0)
+                {
+                    _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_AlienPrefab, transform, x, y);
+                    _intGrid[x, y] = 1;
+                    _boolGrid[x, y] = true;
+                }
+
 
                 //if something required in each room hasn't spawned
                 if (x == gridWidth - 1 && y == gridHeight - 1)

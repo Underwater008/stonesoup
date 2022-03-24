@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ABX_AlienSheep : BasicAICreature
+public class ABX_AlienSheep : ABX_BasicAICreature
 {
     const float BRIGHTNESS = 150f;
 
