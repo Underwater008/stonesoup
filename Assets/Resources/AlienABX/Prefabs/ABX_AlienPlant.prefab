@@ -122,3 +122,6 @@ MonoBehaviour:
   tileWereHolding: {fileID: 0}
   aimDirection: {x: 0, y: 0}
   resourceTag: 1
+  SFPickUpMine: {fileID: 0}
+  SFPickUpPlant: {fileID: 0}
+  SFPickUpTissue: {fileID: 0}

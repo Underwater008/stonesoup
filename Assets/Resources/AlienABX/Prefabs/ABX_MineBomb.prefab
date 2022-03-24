@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7271861987928873825}
   - component: {fileID: -3020573900487287235}
   - component: {fileID: 1376920532218211436}
-  - component: {fileID: -6571782859267608794}
+  - component: {fileID: -419594559443299018}
   m_Layer: 0
   m_Name: ABX_MineBomb
   m_TagString: Untagged
@@ -100,7 +100,7 @@ CircleCollider2D:
   m_Offset: {x: -0.0064564943, y: -0.09684688}
   serializedVersion: 2
   m_Radius: 0.7076575
---- !u!114 &-6571782859267608794
+--- !u!114 &-419594559443299018
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,12 +109,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8196001720433648083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 471d00621521ed646aa8dff13f801f7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cea97b75fb80c046af2c7ddec97a9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tags: 33090
-  tileName: 
-  health: 1
+  tileName: Bomb
+  health: 99
   deathEffect: {fileID: 0}
   deathSFX: {fileID: 0}
   heldOffset: {x: 0.2, y: -0.1}

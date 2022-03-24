@@ -27,14 +27,14 @@ RectTransform:
   m_GameObject: {fileID: 8639264408488765568}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.1159, y: 2.1159, z: 2.1159}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6026314451443677135}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0048653, y: 0.94481}
+  m_AnchoredPosition: {x: -0.01, y: 1.34}
   m_SizeDelta: {x: 22.1, y: 4.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1134647480498525937
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: sadwads
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -125,15 +125,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 8
+  m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 4169918119924474378}
   - component: {fileID: -8741019469231503726}
   m_Layer: 0
-  m_Name: ABX_RS2
+  m_Name: ABX_RS_Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,8 +198,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8753783154295649008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 0.020519, z: 0}
-  m_LocalScale: {x: 0.43564, y: 0.43564, z: 0.43564}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3826477851864822650}
   m_Father: {fileID: 0}
@@ -303,14 +303,14 @@ MonoBehaviour:
   heldAngle: 0
   tileWereHolding: {fileID: 0}
   aimDirection: {x: 0, y: 0}
-  requiredObject: {fileID: -7955414775269456285, guid: 5ad953bc79bd2e748b3696e63f7fc937,
+  requiredObject: {fileID: -3595403420118169146, guid: cd61038ced2e2e04d8f46e3fb5265aca,
     type: 3}
   requiredAmount: 3
-  dropItemPrefab: {fileID: 4290680103985690525, guid: ea7ba37ad19a34ad9b2ecf16d812a9c2,
+  dropItemPrefab: {fileID: 8196001720433648083, guid: c9fa1e617c5e41c48aa925fbf31ec450,
     type: 3}
   dropAmount: 1
   dropOffset: {x: 0, y: 0, z: 0}
-  isOneTime: 1
+  isOneTime: 0
   textUI: {fileID: 8766180062669769379}
 --- !u!50 &-8741019469231503726
 Rigidbody2D:
