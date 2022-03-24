@@ -32,6 +32,8 @@ public class ABX_Door : ABX_Tile
     // }
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (collision.GetComponent<Tile>() == null)
+            return;
         if (collision.GetComponent<Tile>().tileName.Equals(keyTile.tileName) && IsInHand(collision.transform))
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
