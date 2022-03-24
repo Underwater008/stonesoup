@@ -149,8 +149,6 @@ public class ABX_Room : Room
                             continue;
                         }
 
-
-
             }
     }
     void MakeExits()
@@ -231,7 +229,7 @@ public class ABX_Room : Room
                     _boolGrid[x, y] = true;
                 }
                 // Alien
-                if (Random.Range(0f, 1f) < .5f && _intGrid[x, y] == 0)
+                if (Random.Range(0f, 1f) < .5f && _intGrid[x, y] == 0 && roomGridY == 3)
                 {
                     _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_AlienPrefab, transform, x, y);
                     _intGrid[x, y] = 1;
