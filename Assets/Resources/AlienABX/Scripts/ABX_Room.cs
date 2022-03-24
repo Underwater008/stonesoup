@@ -101,6 +101,7 @@ public class ABX_Room : Room
         SpawnWalls();
         MakeOtherTiles();
         roomValTMP.text = roomVal.ToString();
+        roomValTMP.text = "";
         yield break;
     }
 
