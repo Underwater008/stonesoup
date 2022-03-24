@@ -17,10 +17,11 @@ public class ABX_Shovel : ABX_Tile
     }
     public override void useAsItem(Tile tileUsingUs)
     {
-        shovelAnimator.SetTrigger("shov");
         if (!gameObject.activeSelf)
             return;
         StartCoroutine(UseShovel());
+        shovelAnimator.SetTrigger("shov");
+
         /*
         RaycastHit2D[] hit;
         hit = Physics2D.RaycastAll(_tileHoldingUs.transform.position, Vector3.down);
