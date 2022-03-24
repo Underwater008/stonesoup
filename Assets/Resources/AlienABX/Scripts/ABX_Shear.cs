@@ -7,8 +7,11 @@ public class ABX_Shear : ABX_Tile
     public float range;
     List<Tile> _target = new List<Tile>();
 
+    public Animator shearAnimator;
+
     public override void useAsItem(Tile tileUsingUs)
     {
+        shearAnimator.SetTrigger("swing");
         if (_target == null)
             return;
         foreach (Tile tile in _target)
