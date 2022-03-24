@@ -655,16 +655,24 @@ public class ABX_Room : Room
         }
         return false;
     }
+
     bool IsPointNavigable(int[,] indexGrid, Vector2Int point)
     {
+
         if (IsPointInGrid(point) == false)
             return false;
-        if (indexGrid[point.x, point.y] < 7)
+        if (roomVal == 1 && indexGrid[point.x, point.y] < 6)
+        {
+            return true;
+        }
+        if (roomVal != 1 && indexGrid[point.x, point.y] < 7)
             return true;
         else
             return false;
 
     }
+
+
     bool IsPointInGrid(Vector2Int point)
     {
         if (point.x < 0 || point.x >= LevelGenerator.ROOM_WIDTH)
