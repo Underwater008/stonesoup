@@ -76,11 +76,13 @@ public class ABX_Tile : Tile
         if (isAdded == 0)
         {
             Destroy(gameObject);
+            return;
         }
         else if (isAdded == 1)
         {
             base.pickUp(tilePickingUsUp);
             gameObject.SetActive(false);
+            return;
         }
     }
 

@@ -311,7 +311,7 @@ MonoBehaviour:
     type: 3}
   dropAmount: 1
   dropOffset: {x: 0, y: 0, z: 0}
-  isOneTime: 1
+  isOneTime: 0
   textUI: {fileID: 8766180062669769379}
 --- !u!50 &-8741019469231503726
 Rigidbody2D:

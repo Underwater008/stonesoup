@@ -39,9 +39,14 @@ public class ABX_Plant : ABX_Tile
             }
         }
 
+
+
         _canDrop = false;
+
+
         GetComponent<SpriteRenderer>().sprite = harvestedSprite;
         if (deathSFX != null)
             AudioManager.playAudio(deathSFX);
+        die();
     }
 }

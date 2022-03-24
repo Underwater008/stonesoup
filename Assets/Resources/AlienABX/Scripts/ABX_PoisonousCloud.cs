@@ -7,11 +7,14 @@ public class ABX_PoisonousCloud : ABX_Tile
     [Header("Posionous Cloud")]
     public int damage;
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         Tile tile = collision.gameObject.GetComponent<Tile>();
         if (tile == null)
             return;
-
+        if (tile.hasTag(TileTags.Player))
+        {
+            tile.takeDamage(this, damage, DamageType.Explosive);
+        }
     }
 }
