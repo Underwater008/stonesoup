@@ -244,6 +244,8 @@ MonoBehaviour:
     type: 3}
   ABX_ShearPrefab: {fileID: 558729103335457694, guid: f60719622cbccb74083da41ea9aad989,
     type: 3}
+  ABX_ShovelPrefab: {fileID: 2171273628173029263, guid: 1f60f54235dc41a498e009076834d41c,
+    type: 3}
   automataSteps: 10
   caDeathLimit: 3
   caBirthLimit: 5

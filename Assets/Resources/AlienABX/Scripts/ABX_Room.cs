@@ -18,6 +18,7 @@ public class ABX_Room : Room
     public GameObject ABX_RS2Prefab;
     public GameObject ABX_RS3Prefab;
     public GameObject ABX_ShearPrefab;
+    public GameObject ABX_ShovelPrefab;
 
 
 
@@ -40,7 +41,7 @@ public class ABX_Room : Room
     {
         var textBack = GameObject.Find("Canvas").transform.Find("text_back").GetComponent<RectTransform>();
         var pos = textBack.anchoredPosition;
-        textBack.anchoredPosition = new Vector3(pos.x, 260);        //change y to this number in Rect Transform of text_back
+        // textBack.anchoredPosition = new Vector3(pos.x, 0);        //change y to this number in Rect Transform of text_back
     }
     void AssignWallColors()
     {
@@ -271,15 +272,6 @@ public class ABX_Room : Room
             _tileGrid[x1, y1] = ABX_Tile.spawnABX_Tile(ABX_RS1Prefab, transform, x1, y1);
             _intGrid[x1, y1] = 1;
             _boolGrid[x1, y1] = true;
-            //do it again for the shrine
-            // while (_intGrid[x1, y1] != 0)
-            // {
-            //     x1 = Random.Range(0, gridWidth);
-            //     y1 = Random.Range(0, gridHeight);
-            // }
-            // _tileGrid[x1, y1] = ABX_Tile.spawnABX_Tile(ABX_RS1Prefab, transform, x1, y1);
-            // _intGrid[x1, y1] = 1;
-            // _boolGrid[x1, y1] = true;
             firstShopSpawned = true;
         }
 
@@ -295,19 +287,8 @@ public class ABX_Room : Room
             _tileGrid[x1, y1] = ABX_Tile.spawnABX_Tile(ABX_RS2Prefab, transform, x1, y1);
             _intGrid[x1, y1] = 1;
             _boolGrid[x1, y1] = true;
-
-            //do it again for the shrine
-            // while (_intGrid[x1, y1] != 0)
-            // {
-            //     x1 = Random.Range(0, gridWidth);
-            //     y1 = Random.Range(0, gridHeight);
-            // }
-            // _tileGrid[x1, y1] = ABX_Tile.spawnABX_Tile(ABX_RS2Prefab, transform, x1, y1);
-            // _intGrid[x1, y1] = 1;
-            // _boolGrid[x1, y1] = true;
             secondShopSpawned = true;
         }
-
 
         if (roomVal == generator.maxRoomVal && !thirdShopSpawned)
         {
@@ -321,19 +302,29 @@ public class ABX_Room : Room
             _tileGrid[x1, y1] = ABX_Tile.spawnABX_Tile(ABX_RS3Prefab, transform, x1, y1);
             _intGrid[x1, y1] = 1;
             _boolGrid[x1, y1] = true;
-
-            // //do it again for the shrine
-            // while (_intGrid[x1, y1] != 0)
-            // {
-            //     x1 = Random.Range(0, gridWidth);
-            //     y1 = Random.Range(0, gridHeight);
-            // }
-            // _tileGrid[x1, y1] = ABX_Tile.spawnABX_Tile(ABX_RS3Prefab, transform, x1, y1);
-            // _intGrid[x1, y1] = 1;
-            // _boolGrid[x1, y1] = true;
             thirdShopSpawned = true;
         }
+
         ///<<RESEARCH>><<END>>///
+        ///<<SHOVEL>>///
+        bool shovelSpawned = false;
+
+        if (!shovelSpawned && roomVal == 1)
+        {
+            int x1 = 0;
+            int y1 = 0;
+            while (_intGrid[x1, y1] != 0)
+            {
+                x1 = Random.Range(0, gridWidth);
+                y1 = Random.Range(0, gridHeight);
+            }
+            _tileGrid[x1, y1] = ABX_Tile.spawnABX_Tile(ABX_ShovelPrefab, transform, x1, y1);
+            _intGrid[x1, y1] = 1;
+            _boolGrid[x1, y1] = true;
+
+
+            shovelSpawned = true;
+        }
         ///<<SHEAR>>///
         bool shearSpawned = false;
         //The shear

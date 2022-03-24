@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tags: 2
-  tileName: Alien Plant
+  tileName: Borg Plant
   health: 1
   deathEffect: {fileID: 0}
   deathSFX: {fileID: 0}
