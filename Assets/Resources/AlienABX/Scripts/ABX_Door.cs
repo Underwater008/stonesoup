@@ -9,6 +9,7 @@ public class ABX_Door : ABX_Tile
     Transform canvas;
 
     public Tile keyTile;
+    public GameObject pickUpEUI;
     void Start()
     {
         canvas = GameObject.Find("Canvas").transform;
@@ -37,7 +38,7 @@ public class ABX_Door : ABX_Tile
         {
 
 
-            var prefab = Resources.Load<GameObject>("Xiao/UI/PickUpE");
+            var prefab = pickUpEUI;
         }
     }
 

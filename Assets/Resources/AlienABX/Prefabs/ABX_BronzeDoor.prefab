@@ -98,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0011856109, y: -0.0007583201}
+  m_Offset: {x: -0.0007901788, y: 0.0003707409}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,8 +109,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32859293, y: 0.32605344}
-  m_EdgeRadius: 0.21
+  m_Size: {x: 0.3325445, y: 0.33056957}
+  m_EdgeRadius: 0
 --- !u!50 &-8571633189322029550
 Rigidbody2D:
   serializedVersion: 4
@@ -154,4 +154,6 @@ MonoBehaviour:
   tileWereHolding: {fileID: 0}
   aimDirection: {x: 0, y: 0}
   keyTile: {fileID: -3409341309803591836, guid: ea7ba37ad19a34ad9b2ecf16d812a9c2,
+    type: 3}
+  pickUpEUI: {fileID: 672723536979813573, guid: 32e4a6f820ae64e7db2e37b393dcd269,
     type: 3}

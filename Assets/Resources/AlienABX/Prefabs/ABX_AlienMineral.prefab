@@ -124,3 +124,5 @@ MonoBehaviour:
   aimDirection: {x: 0, y: 0}
   resourceTag: 0
   SFPickUpMine: {fileID: 8300000, guid: 4a4d4e63045ae47cb9ca8f2f70b1e690, type: 3}
+  SFPickUpPlant: {fileID: 8300000, guid: 1b394ca169d19439997609284dec1ba1, type: 3}
+  SFPickUpTissue: {fileID: 0}
