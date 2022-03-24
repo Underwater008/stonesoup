@@ -153,7 +153,6 @@ public class ABX_AlienSheep : ABX_BasicAICreature
 
     IEnumerator Move()
     {
-        Debug.Log("Moving");
         yield return new WaitForSeconds(Random.Range(moveIntervalMin, moveIntervalMax));
         takeStep();
         StartCoroutine(Move());

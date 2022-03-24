@@ -12,7 +12,7 @@ public class ABX_Shear : ABX_Tile
     public override void useAsItem(Tile tileUsingUs)
     {
         shearAnimator.SetTrigger("swing");
-        if (_target == null)
+        if (_target.Count == 0)
             return;
         foreach (Tile tile in _target)
         {
