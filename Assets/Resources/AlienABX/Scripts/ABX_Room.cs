@@ -10,6 +10,7 @@ public class ABX_Room : Room
     public GameObject ABX_WallPrefab;
     public GameObject ABX_PlantPrefab;
     public GameObject ABX_DirtPrefab;
+    public GameObject ABX_NotDirtWallPrefab;
     public GameObject ABX_DoorPrefab;
     public GameObject ABX_UnbreakableWallPrefab;
     public GameObject ABX_ClayPrefab;
@@ -229,7 +230,7 @@ public class ABX_Room : Room
                     _boolGrid[x, y] = true;
                 }
                 // Alien
-                if (Random.Range(0f, 1f) < .5f && _intGrid[x, y] == 0 && roomGridY == 3)
+                if (Random.Range(0f, 1f) < .3f && _intGrid[x, y] == 0 && roomGridY == 3)
                 {
                     _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_AlienPrefab, transform, x, y);
                     _intGrid[x, y] = 1;
@@ -337,7 +338,22 @@ public class ABX_Room : Room
 
             shearSpawned = true;
         }
-
+        ///<<GASMASK>>///
+        bool gasMaskSpawned = false;
+        if (roomVal == generator.maxRoomVal - 1 && !gasMaskSpawned)
+        {
+            int x1 = 0;
+            int y1 = 0;
+            while (_intGrid[x1, y1] != 0)
+            {
+                x1 = Random.Range(0, gridWidth);
+                y1 = Random.Range(0, gridHeight);
+            }
+            _tileGrid[x1, y1] = ABX_Tile.spawnABX_Tile(ABX_GasMaskPrefab, transform, x1, y1);
+            _intGrid[x1, y1] = 1;
+            _boolGrid[x1, y1] = true;
+            gasMaskSpawned = true;
+        }
 
     }
 
@@ -430,16 +446,29 @@ public class ABX_Room : Room
 
                 if (_boolGrid[x, y])
                 {
+                    //first room
+                    if (roomVal == 1)
+                    {
+                        if (_intGrid[x, y] <= 7)
+                        {
+                            continue;
+                        }
+                        if (_intGrid[x, y] == 8)
+                        {
+                            _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DirtPrefab, transform, x, y);
+                            continue;
+                        }
+                    }
 
                     //Dirt walls
-                    if (_intGrid[x, y] == 1 ||
-                        _intGrid[x, y] == 2 ||
-                        _intGrid[x, y] == 3 ||
-                        _intGrid[x, y] == 4 ||
-                        _intGrid[x, y] == 5 ||
-                        _intGrid[x, y] == 6 ||
-                        _intGrid[x, y] == 7)
+                    // if (_intGrid[x, y] <= 6)
+                    // {
+                    //     _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_NotDirtWallPrefab, transform, x, y);
+                    //     continue;
+                    // }
+                    if (_intGrid[x, y] <= 7)
                     {
+
                         _tileGrid[x, y] = ABX_Tile.spawnABX_Tile(ABX_DirtPrefab, transform, x, y);
                         continue;
                     }
@@ -654,11 +683,7 @@ public class ABX_Room : Room
 
         if (IsPointInGrid(point) == false)
             return false;
-        if (roomVal == 1 && indexGrid[point.x, point.y] < 6)
-        {
-            return true;
-        }
-        if (roomVal != 1 && indexGrid[point.x, point.y] < 7)
+        if (indexGrid[point.x, point.y] < 7)
             return true;
         else
             return false;

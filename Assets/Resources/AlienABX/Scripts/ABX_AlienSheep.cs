@@ -25,25 +25,80 @@ public class ABX_AlienSheep : ABX_BasicAICreature
     private int MehhhDelay;
     private bool Mehhhed = false;
     public AudioSource Sheep;
+    bool playerNearSheep = false;
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if(Mehhhed == false)
+        Vector2 targetGlobalPos = Tile.toWorldCoord(_targetGridPos.x, _targetGridPos.y);
+        if (Vector2.Distance(transform.position, targetGlobalPos) >= 0.1f)
         {
-          StartCoroutine(Mehhh());
-          Sheep.Play();
-          print(Mehhhed);
+            // If we're away from our target position, move towards it.
+            Vector2 toTargetPos = (targetGlobalPos - (Vector2)transform.position).normalized;
+            moveViaVelocity(toTargetPos, moveSpeed, moveAcceleration);
+            // Figure out which direction we're going to face. 
+            // Prioritize side and down.
+            if (_anim != null)
+            {
+                if (toTargetPos.x >= 0)
+                {
+                    _sprite.flipX = false;
+                }
+                else
+                {
+                    _sprite.flipX = true;
+                }
+                // Make sure we're marked as walking.
+                _anim.SetBool("Walking", true);
+                if (Mathf.Abs(toTargetPos.x) > 0 && Mathf.Abs(toTargetPos.x) > Mathf.Abs(toTargetPos.y))
+                {
+                    _anim.SetInteger("Direction", 1);
+                }
+                else if (toTargetPos.y > 0 && toTargetPos.y > Mathf.Abs(toTargetPos.x))
+                {
+                    _anim.SetInteger("Direction", 0);
+                }
+                else if (toTargetPos.y < 0 && Mathf.Abs(toTargetPos.y) > Mathf.Abs(toTargetPos.x))
+                {
+                    _anim.SetInteger("Direction", 2);
+                }
+            }
         }
+        else
+        {
+            moveViaVelocity(Vector2.zero, 0, moveAcceleration);
+            if (_anim != null)
+            {
+                _anim.SetBool("Walking", false);
+            }
+        }
+
+        if (playerNearSheep)
+        {
+            StartCoroutine(Mehhh());
+        }
+        // if (Mehhhed == false)
+        // {
+        //     StartCoroutine(Mehhh());
+        //     Sheep.Play();
+        //     print(Mehhhed);
+        // }
 
 
     }
 
     IEnumerator Mehhh()
     {
+        if (deathSFX == null)
+            yield break;
+
+        AudioManager.playAudio(deathSFX);
+        yield return new WaitForSeconds(deathSFX.length);
+
         MehhhDelay = Random.Range(1, 3);
         yield return new WaitForSeconds(MehhhDelay);
-        Mehhhed = true;
-        
+
+        yield break;
+        // Mehhhed = true;
     }
 
 
@@ -76,6 +131,17 @@ public class ABX_AlienSheep : ABX_BasicAICreature
         if (tile.hasTag(TileTags.Player))
         {
             tile.takeDamage(this, damage, DamageType.Explosive);
+            playerNearSheep = true;
+        }
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        Tile tile = collision.gameObject.GetComponent<Tile>();
+        if (tile == null)
+            return;
+        if (tile.hasTag(TileTags.Player))
+        {
+            playerNearSheep = false;
         }
     }
 

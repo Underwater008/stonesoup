@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tags: 32812
   tileName: 
-  health: 3
+  health: 5
   deathEffect: {fileID: 0}
   deathSFX: {fileID: 0}
   heldOffset: {x: 0.2, y: -0.1}
