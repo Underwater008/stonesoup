@@ -19,6 +19,8 @@ public class ABX_Room : Room
     public GameObject ABX_RS3Prefab;
     public GameObject ABX_ShearPrefab;
     public GameObject ABX_ShovelPrefab;
+    public GameObject ABX_GasMaskPrefab;
+    public GameObject ABX_AlienPrefab;
 
 
 

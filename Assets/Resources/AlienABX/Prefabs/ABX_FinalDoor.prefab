@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8571633189322029550}
   - component: {fileID: -1973143025447840842}
   m_Layer: 0
-  m_Name: ABX_BronzeDoor
+  m_Name: ABX_FinalDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 387254484270218468, guid: 55dbcfdc0715c40c69b28c1af2b2f720, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9371726, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -153,5 +153,5 @@ MonoBehaviour:
   heldAngle: 0
   tileWereHolding: {fileID: 0}
   aimDirection: {x: 0, y: 0}
-  keyTile: {fileID: -3409341309803591836, guid: ea7ba37ad19a34ad9b2ecf16d812a9c2,
+  keyTile: {fileID: -3409341309803591836, guid: 239bfaa9cbdea424396c11a2e1c44827,
     type: 3}

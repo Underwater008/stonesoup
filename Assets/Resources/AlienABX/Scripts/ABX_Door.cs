@@ -8,7 +8,7 @@ public class ABX_Door : ABX_Tile
 
     Transform canvas;
 
-    Tile keyTile;
+    public Tile keyTile;
     void Start()
     {
         canvas = GameObject.Find("Canvas").transform;
@@ -19,7 +19,7 @@ public class ABX_Door : ABX_Tile
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.name.Contains("BronzeKey") && IsInHand(collision.transform))
+        if (collision.GetComponent<Tile>().tileName.Equals(keyTile.tileName) && IsInHand(collision.transform))
         {
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -33,9 +33,10 @@ public class ABX_Door : ABX_Tile
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name.Contains("BronzeKey") && IsInHand(collision.transform))
+        if (collision.GetComponent<Tile>().tileName.Equals(keyTile.tileName) && IsInHand(collision.transform))
         {
-            keyTile = collision.GetComponent<Tile>();
+
+
             var prefab = Resources.Load<GameObject>("Xiao/UI/PickUpE");
         }
     }

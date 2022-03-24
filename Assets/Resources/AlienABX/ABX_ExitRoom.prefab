@@ -43,10 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9fda1be0f47f4d2eb0cd4977c7295a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomVal: 0
   roomAuthor: Abby
   designedRoomFile: {fileID: 4900000, guid: 6e342868efad94d0cbd900adc9f46e89, type: 3}
   localTilePrefabs:
   - {fileID: 1759002711901290, guid: d801de884a7664f12b41f9ccf9872d6d, type: 3}
-  - {fileID: 4290680103985690525, guid: e72fc64a066a2461ab78fb4ea1f615d8, type: 3}
+  - {fileID: 4290680103985690525, guid: b1190d553a11747b9bf526f79ede881c, type: 3}
   roomGridX: 0
   roomGridY: 0
