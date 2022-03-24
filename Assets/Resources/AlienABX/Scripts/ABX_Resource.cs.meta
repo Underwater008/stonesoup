@@ -3,7 +3,13 @@ guid: 3f147e5d10394b54198d75ea18023939
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - deathEffect: {instanceID: 0}
+  - deathSFX: {instanceID: 0}
+  - tileWereHolding: {instanceID: 0}
+  - SFPickUpMine: {fileID: 8300000, guid: 4a4d4e63045ae47cb9ca8f2f70b1e690, type: 3}
+  - SFPickUpPlant: {fileID: 8300000, guid: 4a4d4e63045ae47cb9ca8f2f70b1e690, type: 3}
+  - SFPickUpTissue: {fileID: 8300000, guid: 4a4d4e63045ae47cb9ca8f2f70b1e690, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
