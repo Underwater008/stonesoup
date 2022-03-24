@@ -79,7 +79,7 @@ public class ABX_ResearchStation : ABX_Tile
         }
     }
 
-    void UpdateUI ()
+    void UpdateUI()
     {
         if (_finished)
         {
@@ -88,6 +88,6 @@ public class ABX_ResearchStation : ABX_Tile
         }
         textUI.text = "" + requiredAmount + " " + requiredObject.tileName + " ---> " + " " +
                           dropAmount + " " + dropItemPrefab.GetComponent<ABX_Tile>().tileName + "\n" +
-                          "Need " + (requiredAmount - _current) + " more";
+                          "Deliver " + (requiredAmount - _current) + " more";
     }
 }

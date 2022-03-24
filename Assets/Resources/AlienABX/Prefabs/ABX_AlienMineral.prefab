@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tags: 2
-  tileName: Alien Mineral
+  tileName: Borg Mineral
   health: 1
   deathEffect: {fileID: 0}
   deathSFX: {fileID: 0}

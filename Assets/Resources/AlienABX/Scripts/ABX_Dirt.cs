@@ -56,6 +56,8 @@ public class ABX_Dirt : ABX_Tile
         }
         StopAllCoroutines();
         StartCoroutine(Dirt());
+        if (deathSFX != null)
+            AudioManager.playAudio(deathSFX);
     }
 
     void Enrich()
