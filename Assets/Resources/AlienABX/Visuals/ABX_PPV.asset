@@ -62,10 +62,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 3.79
+    value: 11.48
   threshold:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 1.07
   softKnee:
     overrideState: 0
     value: 0.5
@@ -73,8 +73,8 @@ MonoBehaviour:
     overrideState: 0
     value: 65472
   diffusion:
-    overrideState: 0
-    value: 7
+    overrideState: 1
+    value: 5.03
   anamorphicRatio:
     overrideState: 0
     value: 0
@@ -85,8 +85,8 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   dirtTexture:
-    overrideState: 0
-    value: {fileID: 0}
+    overrideState: 1
+    value: {fileID: 2800000, guid: 1981fcaa9694c41578ca58cf5e195633, type: 3}
     defaultState: 1
   dirtIntensity:
     overrideState: 0
@@ -183,8 +183,8 @@ MonoBehaviour:
     overrideState: 0
     value: 1
   temperature:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: -7
   tint:
     overrideState: 0
     value: 0
@@ -204,8 +204,8 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   contrast:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 21
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -234,14 +234,14 @@ MonoBehaviour:
     overrideState: 0
     value: 100
   lift:
-    overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    overrideState: 1
+    value: {x: 0.9490539, y: 0.99653065, z: 1, w: 0}
   gamma:
-    overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    overrideState: 1
+    value: {x: 0.97700936, y: 0.89778435, z: 1, w: -0.21576764}
   gain:
-    overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    overrideState: 1
+    value: {x: 0.9008609, y: 1, z: 0.96075815, w: 0.48962656}
   masterCurve:
     overrideState: 0
     value:
@@ -1454,7 +1454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6050e2d5de785ce4d931e4dbdbf2d755, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -1464,7 +1464,7 @@ MonoBehaviour:
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.577
+    value: 0.16
   fastMode:
     overrideState: 0
     value: 0

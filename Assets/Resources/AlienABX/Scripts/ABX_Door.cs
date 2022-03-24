@@ -9,7 +9,7 @@ public class ABX_Door : ABX_Tile
     Transform canvas;
 
     public Tile keyTile;
-    public GameObject pickUpEUI;
+
     void Start()
     {
         canvas = GameObject.Find("Canvas").transform;
@@ -17,12 +17,23 @@ public class ABX_Door : ABX_Tile
 
 
 
-
+    // void OnCollisionStay2D(Collision2D collision)
+    // {
+    //     Debug.Log(collision);
+    //     if (collision.gameObject.GetComponent<Tile>().tileName.Equals(keyTile.tileName) && IsInHand(collision.gameObject.transform))
+    //     {
+    //         if (Input.GetKeyDown(KeyCode.Mouse0))
+    //         {
+    //             collision.gameObject.GetComponent<Tile>().useAsItem(this);
+    //             collision.gameObject.GetComponent<ABX_Tile>().ABX_die();
+    //             die();
+    //         }
+    //     }
+    // }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.GetComponent<Tile>().tileName.Equals(keyTile.tileName) && IsInHand(collision.transform))
         {
-            var prefab = pickUpEUI;
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 collision.GetComponent<Tile>().useAsItem(this);
