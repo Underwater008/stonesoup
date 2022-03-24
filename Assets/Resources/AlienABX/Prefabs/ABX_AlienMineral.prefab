@@ -123,3 +123,4 @@ MonoBehaviour:
   tileWereHolding: {fileID: 0}
   aimDirection: {x: 0, y: 0}
   resourceTag: 0
+  SFPickUpMine: {fileID: 8300000, guid: 4a4d4e63045ae47cb9ca8f2f70b1e690, type: 3}

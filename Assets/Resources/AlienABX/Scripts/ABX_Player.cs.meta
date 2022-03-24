@@ -3,7 +3,14 @@ guid: ce40359b65d20bc44ad9a0e71c2400d2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - deathEffect: {instanceID: 0}
+  - deathSFX: {instanceID: 0}
+  - tileWereHolding: {instanceID: 0}
+  - pickupDropSound: {fileID: 8300000, guid: 1b394ca169d19439997609284dec1ba1, type: 3}
+  - hurtSound: {instanceID: 0}
+  - exitSound: {instanceID: 0}
+  - handSymbol: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
