@@ -17,6 +17,7 @@ public class ABX_Room : Room
     public GameObject ABX_RS1Prefab;
     public GameObject ABX_RS2Prefab;
     public GameObject ABX_RS3Prefab;
+    public GameObject ABX_ShearPrefab;
 
 
 
@@ -257,7 +258,7 @@ public class ABX_Room : Room
         bool thirdShopSpawned = false;
 
 
-        ///<<SHOP>>///
+        ///<<RESEARCH>><<STATIONS>>///
         if (_requiredExits.upExitRequired && !firstShopSpawned && roomGridY == 1)
         {
             int x1 = 0;
@@ -307,6 +308,7 @@ public class ABX_Room : Room
             secondShopSpawned = true;
         }
 
+
         if (roomVal == generator.maxRoomVal && !thirdShopSpawned)
         {
             int x1 = 0;
@@ -331,8 +333,26 @@ public class ABX_Room : Room
             // _boolGrid[x1, y1] = true;
             thirdShopSpawned = true;
         }
-        ///<<SHOP>><<END>>///
-        ///<<RESEARCH>><<STATIONS>>///
+        ///<<RESEARCH>><<END>>///
+        ///<<SHEAR>>///
+        bool shearSpawned = false;
+        //The shear
+        if (_requiredExits.downExitRequired && !shearSpawned && roomGridY == 2)
+        {
+            int x1 = 0;
+            int y1 = 0;
+            while (_intGrid[x1, y1] != 0)
+            {
+                x1 = Random.Range(0, gridWidth);
+                y1 = Random.Range(0, gridHeight);
+            }
+            _tileGrid[x1, y1] = ABX_Tile.spawnABX_Tile(ABX_ShearPrefab, transform, x1, y1);
+            _intGrid[x1, y1] = 1;
+            _boolGrid[x1, y1] = true;
+
+
+            shearSpawned = true;
+        }
 
 
     }

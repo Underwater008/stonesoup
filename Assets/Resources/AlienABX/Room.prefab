@@ -242,6 +242,8 @@ MonoBehaviour:
     type: 3}
   ABX_RS3Prefab: {fileID: 8753783154295649008, guid: f68515e0687544b619b4087a63874e96,
     type: 3}
+  ABX_ShearPrefab: {fileID: 558729103335457694, guid: f60719622cbccb74083da41ea9aad989,
+    type: 3}
   automataSteps: 10
   caDeathLimit: 3
   caBirthLimit: 5
