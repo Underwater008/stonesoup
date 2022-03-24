@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ABX_Player : Player
 {
+	public bool hasGasMask = false;
     void Update()
     {
 		if (GameManager.instance.gameIsOver)
@@ -127,5 +128,15 @@ public class ABX_Player : Player
 		}
 
 		updateSpriteSorting();
+	}
+
+    public override void takeDamage(Tile tileDamagingUs, int amount, DamageType damageType)
+    {
+		if (damageType == DamageType.Explosive)
+        {
+			if (hasGasMask)
+				return;
+        }
+		base.takeDamage(tileDamagingUs, amount, damageType);
 	}
 }
