@@ -11,7 +11,7 @@ public class ABX_AlienSheep : ABX_BasicAICreature
 
     [Header("Movement")]
     public float moveIntervalMin;
-    public float moveINtervalMax;
+    public float moveIntervalMax;
 
     [Header("Drops")]
     public GameObject commonDrop;
@@ -105,6 +105,7 @@ public class ABX_AlienSheep : ABX_BasicAICreature
 
     public override void useAsItem(Tile tileUsingUs)
     {
+        Debug.Log("Harvested");
         removeTag(TileTags.Water);
         GetComponent<SpriteRenderer>().color = new Color(BRIGHTNESS, BRIGHTNESS, BRIGHTNESS);
         for (int i = 0; i < Random.Range(minDrop, maxDrop); i++)
@@ -130,7 +131,6 @@ public class ABX_AlienSheep : ABX_BasicAICreature
             return;
         if (tile.hasTag(TileTags.Player))
         {
-            tile.takeDamage(this, damage, DamageType.Explosive);
             playerNearSheep = true;
         }
     }
@@ -147,13 +147,14 @@ public class ABX_AlienSheep : ABX_BasicAICreature
 
     public override void init()
     {
-        base.init();
         StartCoroutine(Move());
+        base.init();
     }
 
     IEnumerator Move()
     {
-        yield return new WaitForSeconds(Random.Range(moveIntervalMin, moveINtervalMax));
+        Debug.Log("Moving");
+        yield return new WaitForSeconds(Random.Range(moveIntervalMin, moveIntervalMax));
         takeStep();
         StartCoroutine(Move());
     }

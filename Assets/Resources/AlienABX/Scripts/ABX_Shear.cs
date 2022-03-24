@@ -15,7 +15,10 @@ public class ABX_Shear : ABX_Tile
         if (_target == null)
             return;
         foreach (Tile tile in _target)
+        {
+            _target.Remove(tile);
             tile.useAsItem(this);
+        }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {

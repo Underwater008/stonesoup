@@ -306,7 +306,7 @@ MonoBehaviour:
   requiredObject: {fileID: -8977522282304464064, guid: 83b5fd38e8d4711469354b5a132cec0d,
     type: 3}
   requiredAmount: 3
-  dropItemPrefab: {fileID: 4290680103985690525, guid: ea7ba37ad19a34ad9b2ecf16d812a9c2,
+  dropItemPrefab: {fileID: 4290680103985690525, guid: 239bfaa9cbdea424396c11a2e1c44827,
     type: 3}
   dropAmount: 1
   dropOffset: {x: 0, y: 0, z: 0}
