@@ -134,9 +134,9 @@ MonoBehaviour:
   aimDirection: {x: 0, y: 0}
   commonDrop: {fileID: 224590343788166565, guid: a2fc33174513cd644939cc625f1ba527,
     type: 3}
-  rareDrop: {fileID: 0}
+  rareDrop: {fileID: 224590343788166565, guid: cd61038ced2e2e04d8f46e3fb5265aca, type: 3}
   commonChance: 0.2
-  rareChance: 0
+  rareChance: 0.05
   minDrop: 1
   maxDrop: 1
   offsetRange: 1

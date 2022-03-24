@@ -309,8 +309,8 @@ MonoBehaviour:
   dropItemPrefab: {fileID: 4290680103985690525, guid: ea7ba37ad19a34ad9b2ecf16d812a9c2,
     type: 3}
   dropAmount: 1
-  dropOffset: {x: 0, y: -2, z: 0}
-  isOneTime: 0
+  dropOffset: {x: 0, y: 0, z: 0}
+  isOneTime: 1
   textUI: {fileID: 8766180062669769379}
 --- !u!50 &-8741019469231503726
 Rigidbody2D:

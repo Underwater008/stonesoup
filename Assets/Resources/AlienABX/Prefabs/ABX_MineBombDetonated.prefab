@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -2931505237953879753}
   - component: {fileID: 3623416441990628476}
   - component: {fileID: -5883250409790338873}
+  - component: {fileID: -2357349939528720644}
   m_Layer: 0
   m_Name: ABX_MineBombDetonated
   m_TagString: Untagged
@@ -144,6 +145,33 @@ MonoBehaviour:
   tileWereHolding: {fileID: 0}
   aimDirection: {x: 0, y: 0}
   minBombPrefab: {fileID: 8196001720433648083, guid: 1a599cdc82b0dca45862cf10c4f37621,
+    type: 3}
+  loopNum: 3
+  countdown: 3
+  damage: 5
+  explosionSpr: {fileID: 21300000, guid: 3c158b8996803f243ad0420c5e8a45bb, type: 3}
+--- !u!114 &-2357349939528720644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524995603275624099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f0aba665e4c6c42bf3c12e598430cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags: 33088
+  tileName: 
+  health: 99
+  deathEffect: {fileID: 0}
+  deathSFX: {fileID: 0}
+  heldOffset: {x: 0.2, y: -0.1}
+  heldAngle: 0
+  tileWereHolding: {fileID: 0}
+  aimDirection: {x: 0, y: 0}
+  minBombPrefab: {fileID: 8196001720433648083, guid: c9fa1e617c5e41c48aa925fbf31ec450,
     type: 3}
   loopNum: 3
   countdown: 3
